@@ -1,0 +1,27 @@
+{
+  "apiProviders": [
+      {
+        "name": "weather",
+        "numOfCredentials": "2",
+        "credentials": [{
+            "credentialField1": "consumerKey",
+            "credentialField2": "secretKey"
+        }]
+      },
+      {
+        "name": "traffic",
+        "numOfCredentials": "2",
+        "credentials": [{
+            "credentialField1": "consumerKey",
+            "credentialField2": "secretKey"
+        }]
+      }, 
+
+
+
+
+
+
+
+  ]
+}
