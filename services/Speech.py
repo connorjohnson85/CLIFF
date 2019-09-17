@@ -29,4 +29,18 @@ def speechToText():
         audio = r.listen(source)
         question = r.recognize_google(audio)
     return question
-    
+
+def textTesting(mode, text):
+    if mode == 'production':
+        textToSpeech(text)
+    elif mode == 'silent':
+        print(text)
+
+def inputTesting(mode, text):
+    if mode == 'production':
+        textToSpeech(text)
+        answer = speechToText()
+        return answer
+    elif mode == 'silent':
+        answer = input(text)
+        return answer
