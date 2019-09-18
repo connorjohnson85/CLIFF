@@ -7,7 +7,7 @@ def printBoard(board):
     for i in board:
 
         print(count , ' '.join(i))
-        count =int(count)
+        count = int(count)
         count  += 1
         if count <= 9:
             count = "0" + str(count)
