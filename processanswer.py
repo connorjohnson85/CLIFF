@@ -1,18 +1,21 @@
 import commands.mymath as mymath
 import commands.system as system
 import commands.productivity as productivity
-from services.Speech import textToSpeech as ts
-import eastereggs.flipacoin as fac
-import eastereggs.rockpaperscissors as rps
-import eastereggs.rolladice as rad
+from services.Speech import textToSpeech as textToSpeech
+import eastereggs.flipacoin as flipACoin
+import eastereggs.rockpaperscissors as RockPaperScissors
+import eastereggs.rolladice as rollADice
+import games.minesweeper as mineSweeper
+
 
 def processAnswerProduction(name, answer): 
+	answer = answer.lower()
 	if answer == 'hello':
-		ts('hello')
+		textToSpeech('hello')
 	elif 'options' in answer: 
 		system.options()
 	elif 'exit' in answer:
-		ts('Goodbye ' + name)
+		textToSpeech('Goodbye ' + name)
 	elif 'email' in answer:
 		productivity.gmail()
 	elif 'reminder' in answer: 
@@ -20,13 +23,15 @@ def processAnswerProduction(name, answer):
 	elif 'what\'s the time' in answer: 
 		system.currentTimeProduction()
 	elif 'flip a coin' in answer: 
-		fac.flipacoin('production')
+		flipACoin.flipacoin('production')
 	elif 'roll a dice' in answer: 
-		rad.rolladice('production')
+		rollADice.rolladice('production')
 	elif 'rock paper scissors' in answer:
-		rps.rockpaperscissors('production')
+		RockPaperScissors.rockpaperscissors('production')
+	elif 'minesweeper' in answer: 
+		mineSweeper.minesweeper('production')
 	else: 
-		ts('I\'m sorry, we don\'t appear to have the command ' + answer)
+		textToSpeech('I\'m sorry, we don\'t appear to have the command ' + answer)
 
 def processAnswerSilent(name, answer):
 	if answer == 'hello':
@@ -42,11 +47,13 @@ def processAnswerSilent(name, answer):
 	elif 'what\'s the time' in answer: 
 		system.currentTimeSilent()
 	elif 'flip a coin' in answer: 
-		fac.flipacoin('silent')
+		flipACoin.flipacoin('silent')
 	elif 'roll a dice' in answer: 
-		rad.rolladice('silent')
+		rollADice.rolladice('silent')
 	elif 'rock paper scissors' in answer:
-		rps.rockpaperscissors('silent')
+		RockPaperScissors.rockpaperscissors('silent')
+	elif 'minesweeper' in answer: 
+		mineSweeper.minesweeper('silent')
 	else: 
 		print('I\'m sorry, we don\'t appear to have the command ' + answer)
 
