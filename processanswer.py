@@ -6,7 +6,7 @@ import eastereggs.flipacoin as flipACoin
 import eastereggs.rockpaperscissors as RockPaperScissors
 import eastereggs.rolladice as rollADice
 import games.minesweeper as mineSweeper
-
+import games.tictactoe as ticTacToe
 
 def processAnswerProduction(name, answer): 
 	answer = answer.lower()
@@ -30,10 +30,13 @@ def processAnswerProduction(name, answer):
 		RockPaperScissors.rockpaperscissors('production')
 	elif 'minesweeper' in answer: 
 		mineSweeper.minesweeper('production')
+	elif 'tictactoe' in answer: 
+		ticTacToe.ticTacToe('production')
 	else: 
 		textToSpeech('I\'m sorry, we don\'t appear to have the command ' + answer)
 
 def processAnswerSilent(name, answer):
+	answer = answer.lower()
 	if answer == 'hello':
 		print('hello')
 	elif 'options' in answer: 
@@ -54,6 +57,8 @@ def processAnswerSilent(name, answer):
 		RockPaperScissors.rockpaperscissors('silent')
 	elif 'minesweeper' in answer: 
 		mineSweeper.minesweeper('silent')
+	elif 'tictactoe' in answer: 
+		ticTacToe.ticTacToe('silent')
 	else: 
 		print('I\'m sorry, we don\'t appear to have the command ' + answer)
 
