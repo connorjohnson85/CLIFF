@@ -3,7 +3,7 @@ import datetime
 from services.Speech import textToSpeech as ts
 
 def options():
-    print('C.L.I.F.F: I can currently recognize speech!')
+    print('C.L.I.F.F: I can currently recognize speech, play tictactoe, set reminders, easter eggs, and talk!')
 
 def currentTimeSilent():
     print(datetime.datetime.now().date(), datetime.datetime.now().time())
