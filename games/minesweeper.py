@@ -33,6 +33,8 @@ def minesweeper(mode):
         mineFactor = 2
     if difficulty == 'hard':
         mineFactor = 3 
+    if False: 
+        print(sizeOfBoard)
     for i in range(0, length * sizeFactor * mineFactor):
         i = i
         minerow = random.randint(1, length)
