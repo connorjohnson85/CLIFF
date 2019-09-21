@@ -7,6 +7,7 @@ import eastereggs.rockpaperscissors as RockPaperScissors
 import eastereggs.rolladice as rollADice
 import games.minesweeper as mineSweeper
 import games.tictactoe as ticTacToe
+import ScienceSimulators.physics.main as physics
 
 def processAnswerProduction(name, answer): 
 	answer = answer.lower()
@@ -32,6 +33,8 @@ def processAnswerProduction(name, answer):
 		mineSweeper.minesweeper('production')
 	elif 'tictactoe' in answer: 
 		ticTacToe.ticTacToe('production')
+	elif 'physics engine' in answer: 
+		physics.run()
 	else: 
 		textToSpeech('I\'m sorry, we don\'t appear to have the command ' + answer)
 
@@ -59,6 +62,12 @@ def processAnswerSilent(name, answer):
 		mineSweeper.minesweeper('silent')
 	elif 'tictactoe' in answer: 
 		ticTacToe.ticTacToe('silent')
+	elif 'command line' in answer:
+		system.command_line()
+	elif 'python shell' in answer: 
+		system.python_shell
+	elif 'physics engine' in answer: 
+		physics.run()
 	else: 
 		print('I\'m sorry, we don\'t appear to have the command ' + answer)
 
