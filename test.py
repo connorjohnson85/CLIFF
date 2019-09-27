@@ -10,6 +10,7 @@ def setNewKey():
         letter = random.choice(key)
         dekey.append(letter)
         key.remove(letter)
+        
     print(len(dekey))
 
 setNewKey()
