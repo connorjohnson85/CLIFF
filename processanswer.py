@@ -50,7 +50,7 @@ def processAnswerSilent(name, answer):
 		productivity.gmail()
 	elif 'reminder' in answer: 
 		productivity.reminderSilent(name)
-	elif 'what\'s the time' in answer: 
+	elif 'time' in answer: 
 		system.currentTimeSilent()
 	elif 'flip a coin' in answer: 
 		flipACoin.flipacoin('silent')

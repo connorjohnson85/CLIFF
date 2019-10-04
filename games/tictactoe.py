@@ -213,64 +213,54 @@ def ticTacToe(mode):
     play(mode, board)
 
 def winCheck(mapping, mode):
-        # Row 1
+    # Rows player
     if mapping[0] == 'x' and mapping[1] == 'x' and mapping[2] == 'x':
         playerWinMessage(mode)
-    elif mapping[0] == 'x' and mapping[2] == 'x' and mapping[1] != 'o':
-        board[0][1] = 'o'
-    elif mapping[2] == 'x' and mapping[1] == 'x' and mapping[0] != 'o':
-        board[0][0] = 'o'
-    # Row 2
-    elif mapping[3] == 'x' and mapping[4] != 'o' and mapping[5] == 'x':
-        board[2][1] = 'o'
-    elif mapping[3] != 'o' and mapping[4] == 'x' and mapping[5] == 'x':
-        board[2][0] = 'o'
-    elif mapping[3] == 'x' and mapping[4] == 'x' and mapping[5] != 'o':
-        board[2][2] = 'o'
-    # Row 3 
+    elif mapping[3] == 'x' and mapping[4] == 'x' and mapping[5] == 'x':
+        playerWinMessage(mode)
+    elif mapping[6] == 'x' and mapping[7] == 'x' and mapping[8] == 'x':
+        playerWinMessage(mode)
+    # Rows computer
+    elif mapping[3] == 'o' and mapping[4] == 'o' and mapping[5] == 'o':
+        computerWinMessage(mode)
+    elif mapping[0] == 'o' and mapping[1] == 'o' and mapping[2] == 'o':
+        computerWinMessage(mode)
+    elif mapping[6] == 'o' and mapping[7] == 'o' and mapping[8] == 'o':
+        computerWinMessage(mode)
+    # Columns Player 
     elif mapping[6] == 'x' and mapping[7] == 'x' and mapping[8] != 'o':
         board[4][2] = 'o'
     elif mapping[6] == 'x' and mapping[7] != 'o' and mapping[8] == 'x':
         board[4][1] = 'o'
     elif mapping[6] != 'o' and mapping[7] == 'x' and mapping[8] == 'x':
         board[4][0] = 'o'
-    # Column 1 Where I left off
+    # Columns Computer
     elif mapping[0] == 'x' and mapping[3] == 'x' and mapping[6] != 'o':
         board[4][0] = 'o'
     elif mapping[0] == 'x' and mapping[3] != 'o' and mapping[6] == 'x':
         board[2][0] = 'o'
     elif mapping[0] != 'o' and mapping[3] == 'x' and mapping[6] == 'x':
         board[0][0] = 'o'
-    # Column 2
+    # Diagonals player
     elif mapping[1] == 'x' and mapping[4] == 'x' and mapping[7] != 'o':
         board[4][1] = 'o'
     elif mapping[1] == 'x' and mapping[4] != 'o' and mapping[7] == 'x':
         board[2][1] = 'o'
-    elif mapping[1] != 'o' and mapping[4] == 'x' and mapping[7] == 'x':
-        board[0][1] = 'o'
-    # Column 3 
+
+    # Diagonals computer
     elif mapping[2] == 'x' and mapping[5] == 'x' and mapping[8] != 'o':
         board[4][2] = 'o'
     elif mapping[2] == 'o' and mapping[5] != 'o' and mapping[8] == 'x':
         board[2][2] = 'o'
-    elif mapping[2] != 'o' and mapping[5] == 'x' and mapping[8] == 'x':
-        board[0][2] = 'o'
-    # Diagonal 1
-    elif mapping[2] == 'x' and mapping[4] != 'o' and mapping[6] == 'x':
-        board[2][1] = 'o'
-    elif mapping[2] == 'x' and mapping[4] == 'x' and mapping[6] != 'o':
-        board[4][0] = 'o'
-    elif mapping[2] != 'o' and mapping[4] == 'x' and mapping[6] == 'x':
-        board[0][2] = 'o'
-    # Diagonal 2
-    elif mapping[0] == 'x' and mapping[4] == 'x' and mapping[8] != 'o':
-        board[4][2] = 'o'
-    elif mapping[0] == 'x' and mapping[4] != 'o' and mapping[8] == 'x':
-        board[2][1] = 'o'
-    elif mapping[0] != 'o' and mapping[4] == 'x' and mapping[8] == 'x':
-        board[0][0] = 'o'
+
     
 def playerWinMessage(mode):
     print('Player1 Wins!')
     if input('Play Again?(Y/N)').lower() == 'y':
         ticTacToe(mode)     
+
+def computerWinMessage(mode):
+    print('Computer Wins!')
+    if input('Play Again?(Y/N)').lower() == 'y':
+        ticTacToe(mode)
+

@@ -47,7 +47,7 @@ def differentiate(equation):
 			newTerms.append(newTerm)
 
 	powerRuleDifferentiatedEquation = ' + '.join(newTerms)
-				
+
 	# Find instances of the quotient rules
 
 	# Find instances of the product rules
@@ -55,4 +55,3 @@ def differentiate(equation):
 	# Find instances of a chain rules
 
 
-differentiate('')

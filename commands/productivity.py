@@ -26,6 +26,7 @@ def reminderSilent(name):
                 print('Setting Reminder')
         else: 
                 print('Ok')
+
 def reminderProduction(name):
         ts('When would you like me to set a remdinder?')
         time = input(name + ': ')
