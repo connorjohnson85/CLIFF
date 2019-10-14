@@ -18,7 +18,7 @@ def quad(num1, num2, num3):
 	answer2 = (-num2 - math.sqrt(num2**2 -4 * num1 * num3))/(2*num1)
 	print(answer2)
 
-def differentiate(equation):
+def powerDifferentiate(equation):
 	plus_terms = equation.split('+')
 	terms = []
 	# apply the summation rule
@@ -47,11 +47,19 @@ def differentiate(equation):
 			newTerms.append(newTerm)
 
 	powerRuleDifferentiatedEquation = ' + '.join(newTerms)
+	return powerRuleDifferentiatedEquation
 
-	# Find instances of the quotient rules
-
-	# Find instances of the product rules
+def productRule(equation):
 	
-	# Find instances of a chain rules
+	firstEquation = equation[equation.index('(')+1: equation.index(')')]
+	secondEquation = equation[equation.rindex('(')+1: equation.rindex(')')]
+	differentiatedTerm = '({0})({1}) + ({2})({3})'.format(firstEquation, powerDifferentiate(secondEquation), secondEquation, powerDifferentiate(firstEquation))
+	return differentiatedTerm
 
+
+def quotientRule(equation):
+	firstEquation = equation[equation.index('(')+1: equation.index(')')]
+	secondEquation = equation[equation.index('/')+2:equation.rindex(')')]
+	differentiatedTerm = '(({0})({1}) - ({2})({3}))/({1}^2)'.format(firstEquation, powerDifferentiate(secondEquation), secondEquation, powerDifferentiate(firstEquation))
+	return differentiatedTerm
 

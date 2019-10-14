@@ -31,7 +31,7 @@ def processAnswerProduction(name, answer):
 		RockPaperScissors.rockpaperscissors('production')
 	elif 'minesweeper' in answer: 
 		mineSweeper.minesweeper('production')
-	elif 'tictactoe' in answer: 
+	elif 'tic tac toe' in answer: 
 		ticTacToe.ticTacToe('production')
 	elif 'physics engine' in answer: 
 		physics.run()
