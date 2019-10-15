@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>CLIFF</title>
+        {% if not(user) %}
+        <meta http-equiv="Refresh" content="1; url=/login">
+        {% endif %}
+    </head>
+    <body>
+        {% if user %}
+        <h1 style='text-align: center;'>Home page</h1>
+        <p style='text-align: center;'>Hello {{user}}!</p>
+        {% else %}
+        <p style='text-align: center;'> Ooops! You're not logged in! Our server will redirect you to our login page!</p>
+        {% endif %}
+    </body>
+</html>
