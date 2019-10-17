@@ -12,9 +12,9 @@ class User(db.Model):
 
 class History(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(64), index=True)
     command = db.Column(db.String(120), index=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
         return '<user {} command {}>'.format(self.username, self.command)
