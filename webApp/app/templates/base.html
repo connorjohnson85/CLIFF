@@ -1,0 +1,15 @@
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }}</title>
+      {% else %}
+      <title>Welcome to Cliff!</title>
+      {% endif %}
+    </head>
+    <body>
+        <div>C.L.I.F.F.: <a href="/home">Home</a>
+        <a href="/login">Login</a></div>
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>

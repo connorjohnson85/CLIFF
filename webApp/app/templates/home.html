@@ -1,6 +1,9 @@
-<html>
-    <head>
-        <title>CLIFF</title>
+
+{% extends "base.html" %}
+
+{% block content %}
+    <head></head>
+        <title>Home</title>
         {% if not(user) %}
         <meta http-equiv="Refresh" content="1; url=/login">
         {% endif %}
@@ -13,4 +16,6 @@
         <p style='text-align: center;'> Ooops! You're not logged in! Our server will redirect you to our login page!</p>
         {% endif %}
     </body>
-</html>
+{% endblock %}
+
+
