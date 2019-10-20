@@ -6,7 +6,6 @@ import speech_recognition as sr
 def textToSpeech(mytext):
     # Language in which you want to convert 
     language = 'en'
-  
     # Passing the text and language to the engine,  
     # marked slow=False. Which tells  
     # the module that the converted audio should  
