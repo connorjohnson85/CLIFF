@@ -52,6 +52,7 @@ def placeShip(row, col, direction, checker, item):
 
 def shipController(item):
         print('{2} ({0}), ({1})'.format(item.length, item.number, item. name))
+        print(item.number)
         for number in range(item.number):
             letter = input('Letter? ')
             col = int(input('Number? '))
@@ -65,7 +66,6 @@ def shipController(item):
             for i in range(item.length):
                 if board[col][row+i] == 'X':
                     shipThere = True
-            print(shipThere)
             for i in range(item.length):
                 print(board[col+1][row])
                 if board[col+i][row] == 'X':
@@ -80,10 +80,11 @@ def shipController(item):
                     shipThere = True
             print(shipThere)
             placeShip(col, row, direction, shipThere, item)
+            printBoard(board)
 
 def ship(arrayOfShips):
      for item in arrayOfShips:
-         shipController(item)
+        shipController(item)
 
 def placeShips(ships):
     helper = input('enter 1 to start placing ships, enter 2 for help: ')
