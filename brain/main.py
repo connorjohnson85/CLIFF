@@ -50,6 +50,15 @@ class node():
         id = self.connectionNames[name]
         return id
 
+class nodeCluster():
+    
+    def __init__(self, name):
+        self.name = name 
+
+class brain():
+    def __init__(self, name):
+        self.name = name
+
 node1 = node('node1')
 node2 = node('node2')
 node3 = node('node3')
