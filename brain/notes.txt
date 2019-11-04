@@ -6,3 +6,11 @@ Plausable.
 
 Pros     |     Cons
 smart    |     Very time consuming
+
+The nueron is a very simple structure. However, with billions of them, are brains are the most complex machines out there... 
+considering the popular view of a nueron, that is, a dendrite(sender) with a long axon(reciever) connection, I believe it would theoritaclly be
+possible to create a smart machine using billions of interconnected nodes sending binary on and off signals to eachother, setting things into motion
+to create the first general level AI.
+
+Test1:
+  3 connections each
