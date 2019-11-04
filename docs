@@ -1,0 +1,4 @@
+C.L.I.F.F. is a python application I created to serve as a couple different purposes
+One is that it is my main portfolio project, showcasing technologies that I have learned
+I.E Flask, machine learning using sklearn and numpy, SQLAlchemy, and other technologies
+Another is to act as my "Home Assitant" with the ability to send gmails, set reminders, and eventually do such things as play music

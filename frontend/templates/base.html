@@ -1,0 +1,32 @@
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }} - C.L.I.F.F,</title>
+      {% else %}
+      <title>Welcome to C.L.I.F.F.</title>
+      {% endif %}
+    </head>
+    <body>
+        <div>
+            C.L.I.F.F.:     
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{url_for('command') }}">CLIFF</a>
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}" style="text-align: end;">Login</a>
+            {% else %}
+            <a href="{{ url_for('logout') }}" style="text-align: end;">Logout</a>
+            {% endif %}
+        </div>
+        <hr> 
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>

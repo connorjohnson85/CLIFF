@@ -1,0 +1,8 @@
+An attempt to grant a computer a fully functioning general level intelligence type AI. 
+Ideas on how it could work:
+
+Sub nodify all processes, creating an inter connected web of nodes that share together and can change at will
+Plausable.
+
+Pros     |     Cons
+smart    |     Very time consuming
