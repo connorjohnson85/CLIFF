@@ -1,78 +1,36 @@
-import backend.commands.mymath as mymath
-import backend.commands.system as system
-import backend.commands.productivity as productivity
-from backend.services.Speech import textToSpeech as textToSpeech
-import backend.eastereggs.flipacoin as flipACoin
-import backend.eastereggs.rockpaperscissors as RockPaperScissors
-import backend.eastereggs.rolladice as rollADice
-import backend.games.minesweeper as mineSweeper
-import backend.games.tictactoe as ticTacToe
-import backend.ScienceSimulators.physics.main as physics
-
+import commands.mymath as mymath
+import commands.system as system
+import commands.productivity as productivity
+from services.Speech import textToSpeech as textToSpeech
+import eastereggs.flipacoin as flipACoin
+import eastereggs.rockpaperscissors as RockPaperScissors
+import eastereggs.rolladice as rollADice
+import games.minesweeper as mineSweeper
+import games.tictactoe as ticTacToe
+import ScienceSimulators.physics.main as physics
+import webservices.formservices as formservices
+import eastereggs.pickACard as pickACard
+from services.Speech import textTesting
+from services.Speech import inputTesting
 # This is the body of the program. This connects takes the answer, and then runs the command associated with the command. When it gets too large, I May have to create a new approach to this
 
-def processAnswerProduction(name, answer): 
-	
-	answer = answer.lower()
-	
-	# Hello world test
-	if answer == 'hello':
-		textToSpeech('hello')
+def check(answer): 
+	# Another exit checker
+	if answer == 'exit':
+		return False
+	else:
+		return True
 
-	# Prints options
-	elif 'options' in answer: 
-		system.options()
-	
-	#Exits 
-	elif 'exit' in answer:
-		textToSpeech('Goodbye ' + name)
-
-	# Sends email
-	elif 'email' in answer:
-		productivity.gmail()
-
-	# Set Reminder
-	elif 'reminder' in answer: 
-		productivity.reminderSilent(name)
-
-	# Prints time
-	elif 'what\'s the time' in answer: 
-		system.currentTimeProduction()
-	
-	# Flips a coin
-	elif 'flip a coin' in answer: 
-		flipACoin.flipacoin('production')
-
-	# Rolls a dice
-	elif 'roll a dice' in answer: 
-		rollADice.rolladice('production')
-	
-	# Plays a quick game of rock paper scissors 
-	elif 'rock paper scissors' in answer:
-		RockPaperScissors.rockpaperscissors('production')
-
-	# Runs minesweeper
-	elif 'minesweeper' in answer: 
-		mineSweeper.minesweeper('production')
-
-	# Runs tic tac toe
-	elif 'tic tac toe' in answer: 
-		ticTacToe.ticTacToe('production')
-	
-	# Runs my physics engine 
-	elif 'physics engine' in answer: 
-		physics.run()
-	
-	else: 
-		textToSpeech('I\'m sorry, we don\'t appear to have the command ' + answer)
-
-def processAnswerSilent(name, answer):
+def processAnswer(mode, name, answer):
 
 	answer = answer.lower()
 
 	# Hello World example
 	if answer == 'hello':
-		print('hello')
+		textTesting(mode, 'hello')
+
+	elif 'pick a card' in answer:
+		pickACard.pickACard(mode)
 
 	# Prints options
 	elif 'options' in answer: 
@@ -88,31 +46,36 @@ def processAnswerSilent(name, answer):
 
 	# Sets reminder
 	elif 'reminder' in answer: 
-		productivity.reminderSilent(name)
-
+		if mode == 'silent':
+			productivity.reminderSilent(name)
+		elif mode == 'production':
+			productivity.reminderProduction(name)
 	# prints the time 
 	elif 'time' in answer: 
-		system.currentTimeSilent()
+		if mode == 'silent':
+			system.currentTimeSilent()
+		elif mode == 'production':
+			system.currentTimeProduction()
 
 	# Flips a coin
 	elif 'flip a coin' in answer: 
-		flipACoin.flipacoin('silent')
+		flipACoin.flipacoin(mode)
 
 	# Rolls a dice
 	elif 'roll a dice' in answer: 
-		rollADice.rolladice('silent')
+		rollADice.rolladice(mode)
 
 	# Plays quick game of rock paper scissors 
 	elif 'rock paper scissors' in answer:
-		RockPaperScissors.rockpaperscissors('silent')
+		RockPaperScissors.rockpaperscissors(mode)
 
 	# plays minesweeper
 	elif 'minesweeper' in answer: 
-		mineSweeper.minesweeper('silent')
+		mineSweeper.minesweeper(mode)
 
 	# Plays tic tac toe 
 	elif 'tictactoe' in answer: 
-		ticTacToe.ticTacToe('silent')
+		ticTacToe.ticTacToe(mode)
 
 	# Initializes a command line instance: Specific to silent mode, more of a development option
 	elif 'command line' in answer:
@@ -129,13 +92,6 @@ def processAnswerSilent(name, answer):
 	else: 
 		print('I\'m sorry, we don\'t appear to have the command ' + answer)
 
-def check(answer): 
-	# Another exit checker
-	if answer == 'exit':
-		return False
-	else:
-		return True
-
 def processAnswerWebSite(name, answer):
 
 	answer = answer.lower()
@@ -143,6 +99,9 @@ def processAnswerWebSite(name, answer):
 	# Hello World example
 	if answer == 'hello':
 		return 'hello'
+
+	if answer == 'test':
+		formservices.GetWebInput('command', 'Test')
 
 	# Exits program
 	elif 'exit' in answer:

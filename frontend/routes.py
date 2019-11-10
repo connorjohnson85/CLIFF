@@ -8,6 +8,7 @@ from flask import request
 from werkzeug.urls import url_parse
 from frontend import db
 from backend import processanswer
+from backend.webservices.formservices import *
 
 @app.route('/')
 @app.route('/index')
@@ -54,7 +55,8 @@ def command():
         name = current_user.username
         answer = form.command.data
         response = processanswer.processAnswerWebSite(name, answer)
-        flash(response)
+        if response != None:
+            flash(response)
     return render_template('command.html', title='Command', form=form)
 
 @login_required
@@ -63,3 +65,7 @@ def logout():
     logout_user()
     return redirect(url_for('login'))
 
+@login_required
+@app.route('/rum')
+def rum():
+    return render_template('rum.html', title='Rum')

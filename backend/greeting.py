@@ -1,4 +1,4 @@
-from backend.services.Speech import textToSpeech as ts
+from services.Speech import textToSpeech as ts
 
 # Greeting functions defined to be used more effiecently, gets name of current user
 

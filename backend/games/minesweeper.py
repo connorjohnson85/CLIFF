@@ -1,6 +1,6 @@
 # text based only
 import random
-from backend.services.Speech import textTesting, textToSpeech, speechToText, inputTesting 
+from services.Speech import textTesting, textToSpeech, speechToText, inputTesting 
 
 # prints board
 def printBoard(board):

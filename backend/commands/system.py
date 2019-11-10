@@ -1,5 +1,5 @@
 import datetime
-from backend.services.Speech import textToSpeech as ts
+from services.Speech import textToSpeech as ts
 import os
 
 #

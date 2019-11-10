@@ -1,6 +1,6 @@
 import random
-from backend.services.Speech import textTesting
-from backend.services.Speech import inputTesting
+from services.Speech import textTesting
+from services.Speech import inputTesting
 
 def rockpaperscissors(mode):
     # A simple Rock Paper Scissors Game

@@ -1,5 +1,5 @@
 import random
-from backend.services.Speech import textToSpeech as ts
+from services.Speech import textToSpeech as ts
 
 # Easter Egg. Flips a coin
 def flipacoin(mode):

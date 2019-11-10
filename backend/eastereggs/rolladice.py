@@ -1,5 +1,5 @@
 import random
-from backend.services.Speech import textToSpeech as ts
+from services.Speech import textToSpeech as ts
 
 # Simple easter egg to roll a dice
 def rolladice(mode):

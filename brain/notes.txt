@@ -14,3 +14,12 @@ to create the first general level AI.
 
 Test1:
   3 connections each
+
+Test2: 
+  Adding brain class as well as node cluster. A node has 3 connections with each node next to it, closed system. 
+  A node cluster takes the input from the nodes and gives it a name for the process, connecting it to four other node clusters, 
+  creating a total of 20 nodes in the node cluster class. NOT A CLOSED SYSTEM
+  The brain takes all the node cluster classes and compares the input to think
+  40 nodes
+  2 clusters
+  1 brain
