@@ -8,7 +8,3 @@ def pickACard(mode):
     card = random.choice(cards)
     suit = random.choice(suits)
     TTS(mode, 'Your card is a {0} of {1}'.format(card, suit))
-
-
-
-pickACard('silent')

@@ -12,6 +12,7 @@ import webservices.formservices as formservices
 import eastereggs.pickACard as pickACard
 from services.Speech import textTesting
 from services.Speech import inputTesting
+import eastereggs.pickanumber as pickANumber
 # This is the body of the program. This connects takes the answer, and then runs the command associated with the command. When it gets too large, I May have to create a new approach to this
 
 def check(answer): 
@@ -88,6 +89,9 @@ def processAnswer(mode, name, answer):
 	# Runs my physics engine
 	elif 'physics engine' in answer: 
 		physics.run()
+
+	elif 'pick a number' in answer: 
+		pickANumber.pickANumber(mode)
 
 	else: 
 		print('I\'m sorry, we don\'t appear to have the command ' + answer)
