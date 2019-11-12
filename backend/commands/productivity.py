@@ -32,6 +32,7 @@ def gmail():
 
 # Sets Reminder TODO: SET REMINDER ;) 
 def reminderSilent(name): 
+        reminder = open('reminders', 'a+')
         print('C.L.I.F.F: When would you like me to set a reminder?')
         time = input(name + ': ')
         print('C.L.I.F.F: What would you like it to say?')
@@ -44,6 +45,7 @@ def reminderSilent(name):
                 print('Ok')
 
 def reminderProduction(name):
+        reminder = open('reminders', 'a+')
         ts('When would you like me to set a remdinder?')
         time = input(name + ': ')
         ts('C.L.I.F.F: What would you like it to say?')
