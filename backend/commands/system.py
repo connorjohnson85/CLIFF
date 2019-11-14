@@ -36,3 +36,5 @@ def python_shell():
     print('Starting Python Shell')
     os.system('python3')
 
+def network_diagonistics():
+    os.system('ping google.com -c 10 | grep \'packets\'')

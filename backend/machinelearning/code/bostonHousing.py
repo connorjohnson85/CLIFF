@@ -9,7 +9,7 @@ import numpy as np
 boston_dataset = load_boston()
 
 # Specifiys which column we want to look at
-column = 6
+column = 9
 
 # Splits data into two different arrays - one for the feature points, one for the target values
 X = boston_dataset.data[:, np.newaxis, column]

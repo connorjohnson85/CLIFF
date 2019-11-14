@@ -8,4 +8,4 @@ def weather():
 def traffic(): 
     trafficalData = 'low'
     print('The traffic is very ' + trafficalData + ' today')
-
+    
