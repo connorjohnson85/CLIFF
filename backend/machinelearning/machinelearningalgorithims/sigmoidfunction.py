@@ -1,7 +1,7 @@
 import math
 print(1-math.e**-0)
 def sigmoid(z):
-    return (1-(math.e**-z))
+    return 1/(1+(math.e**-z))
 
-hello = sigmoid(0)
+hello = sigmoid(10)
 print(hello)

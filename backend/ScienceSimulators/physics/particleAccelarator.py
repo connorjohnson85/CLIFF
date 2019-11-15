@@ -1,11 +1,6 @@
+import backend.ScienceSimulators.chemistry.periodicTable as elements
 
-
-
-
-
-
-
-
+element = elements.periodicTable()
 
 class particleAccelarator():
     def __init__(self):
@@ -21,4 +16,5 @@ class particleAccelarator():
         self.elements.append(Element)
         print(self.elements)
 
-
+dude = particleAccelarator()
+dude.on()
