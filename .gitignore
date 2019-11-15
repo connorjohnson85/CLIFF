@@ -7,3 +7,4 @@ encryption.py
 serverConnections.py
 journals
 hardware
+.gitignore
