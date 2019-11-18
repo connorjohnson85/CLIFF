@@ -1,7 +1,8 @@
-import math
-print(1-math.e**-0)
-def sigmoid(z):
-    return 1/(1+(math.e**-z))
+import numpy as np
 
-hello = sigmoid(10)
-print(hello)
+def sigmoid(z):
+    return 1/(1+(np.exp(-z)))
+
+def sigmoidDerivative(z):
+    return sigmoid(z) * (1 - sigmoid(z))
+
