@@ -7,3 +7,6 @@ serverConnections.py
 journals
 hardware
 .gitignore
+example.py
+example2.py
+regressionexample.py
