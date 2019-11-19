@@ -1,5 +1,6 @@
 import random
-
+batman = not 'batman'
+print(batman)
 # my nueron model class. Expect it to change. A lot XD XD XD
 class node():
     # initializes a "nueron" with just a name
@@ -103,12 +104,14 @@ class brain():
     def __repr__(self):
         return('name: {0} purpose: {1}'.format(self.name, self.purpose))
 
+
+
 node1 = node('node1')
-node2 = node('node2')
+node2 = node('node2')a cq   1
 node3 = node('node3')
 node4 = node('node4')
 node5 = node('node5')
-node6 = node('node6')
+node6 = node('node6') 
 node7 = node('node7')
 node8 = node('node8')
 node9 = node('node9')
@@ -147,10 +150,6 @@ nodeCluster3.setConnections(nodeCluster1, nodeCluster2, nodeCluster4, nodeCluste
 nodeCluster4.setConnections(nodeCluster1, nodeCluster2, nodeCluster3, nodeCluster5)
 nodeCluster1.setConnections(nodeCluster1, nodeCluster2, nodeCluster3, nodeCluster4)
 
-
-
-
-
 response = node1.connect(1)
 
 x = 0
@@ -183,3 +182,4 @@ brain1.setChildren([nodeCluster1, nodeCluster2, nodeCluster3, nodeCluster4, node
 response = brain1.readChildren()
 
 print(response)
+
