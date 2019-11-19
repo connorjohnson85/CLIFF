@@ -93,6 +93,12 @@ def processAnswer(mode, name, answer):
 	elif 'pick a number' in answer: 
 		pickANumber.pickANumber(mode)
 
+	elif 'check network' in answer or 'network diagonostics' in answer:
+		system.network_diagonistics()
+		
+	elif 'check system' in answer or 'system diagonostics' in answer:
+		system.system_diagonistics()
+
 	else: 
 		print('I\'m sorry, we don\'t appear to have the command ' + answer)
 

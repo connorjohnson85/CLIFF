@@ -4,7 +4,6 @@ import math
 # A calculator function
 # Use it to create new calulator functions to add to it. Useful for Physics engine
 #
-
 def add(num1, num2):
 	return (num1 + num2)
 
@@ -23,7 +22,6 @@ def quad(num1, num2, num3):
 	answer2 = (-num2 - math.sqrt(num2**2 -4 * num1 * num3))/(2*num1)
 	print(answer2)
 
-# Calculus calculator
 def powerDifferentiate(equation):
 	plus_terms = equation.split('+')
 	terms = []
@@ -61,7 +59,6 @@ def productRule(equation):
 	secondEquation = equation[equation.rindex('(')+1: equation.rindex(')')]
 	differentiatedTerm = '({0})({1}) + ({2})({3})'.format(firstEquation, powerDifferentiate(secondEquation), secondEquation, powerDifferentiate(firstEquation))
 	return differentiatedTerm
-
 
 def quotientRule(equation):
 	firstEquation = equation[equation.index('(')+1: equation.index(')')]

@@ -1,7 +1,6 @@
 # Python program to demonstrate 
 # KNN classification algorithm 
 # on IRIS dataset
- 
 from sklearn.datasets import load_iris 
 from sklearn.neighbors import KNeighborsClassifier 
 import numpy as np 

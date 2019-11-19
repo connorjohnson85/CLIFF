@@ -8,7 +8,7 @@ import os
 #
 
 def options():
-    print('C.L.I.F.F: I can currently recognize speech, play tictactoe, set reminders, easter eggs, and talk!')
+    print('C.L.I.F.F: I can currently recognize speech, play tictactoe, set reminders, easter eggs, run system and network diagonistics, and talk!')
 
 def currentTimeSilent():
     # Gets the current date
@@ -38,3 +38,7 @@ def python_shell():
 
 def network_diagonistics():
     os.system('ping google.com -c 10 | grep \'packets\'')
+
+def system_diagonistics():
+    os.system('top -l1 | grep Processes -a10')
+    network_diagonistics()
