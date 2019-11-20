@@ -3,17 +3,18 @@ import commands.system as system
 import commands.productivity as productivity
 import commands.protocols as protocol
 from services.Speech import textToSpeech as textToSpeech
+from services.Speech import textTesting
+from services.Speech import inputTesting
 import eastereggs.flipacoin as flipACoin
 import eastereggs.rockpaperscissors as RockPaperScissors
 import eastereggs.rolladice as rollADice
+import eastereggs.pickACard as pickACard
+import eastereggs.pickanumber as pickANumber
 import games.minesweeper as mineSweeper
 import games.tictactoe as ticTacToe
 import ScienceSimulators.physics.main as physics
 import webservices.formservices as formservices
-import eastereggs.pickACard as pickACard
-from services.Speech import textTesting
-from services.Speech import inputTesting
-import eastereggs.pickanumber as pickANumber
+
 # This is the body of the program. This connects takes the answer, and then runs the command associated with the command. When it gets too large, I May have to create a new approach to this
 
 def check(answer): 
@@ -104,7 +105,9 @@ def processAnswer(mode, name, answer):
 		answer = answer.replace('run ', '')
 		userProtocol = answer
 		protocol.runProtocol(mode, userProtocol)
-
+	elif 'create project' in answer:
+		projectName = answer.split()[2:]
+		system.createProject(' '.join(projectName))
 	else: 
 		print('I\'m sorry, we don\'t appear to have the command ' + answer)
 

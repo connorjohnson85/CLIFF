@@ -43,3 +43,39 @@ def system_diagonistics():
     os.system('top -l1 | grep Processes -a10')
     os.system('du -c | grep total')
     network_diagonistics()
+
+def readFile(file):
+    file = open(file, 'r')
+    file.read()
+    file.close()
+
+def writeFile(file, lines):
+    file = open(file, 'w+')
+    file.write(lines)
+    file.close()
+
+def createProject(dirName):
+    path = os.getcwd()
+    path += '/projects/' + dirName
+    try: 
+        os.mkdir(path)
+        file = open(path + '/LogFile.txt', 'w+')
+        file.write('A basic Log File. Used to log errors so they don\'t display on the main console')
+        file.close()
+        file = open(path + '/main.py', 'w+')
+        file.write('''# A basic main.py template file. imports my most commonly used basic modules.
+import random
+import math
+import os
+
+
+# Your main function class goes here
+def main():
+    print('Filler Code')
+''')
+        file.close()
+    except OSError:
+       print('Creation of Project %s failed' % dirName)
+    else:
+        print('Successfully created Project %s' % dirName)
+
