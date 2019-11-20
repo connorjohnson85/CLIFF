@@ -18,16 +18,14 @@ city_name = input("Enter city name : ")
 # complete_url variable to store 
 # complete url address 
 complete_url = base_url + "appid=" + api_key + "&q=" + city_name 
-  
 # get method of requests module 
 # return response object 
 response = requests.get(complete_url) 
-  
+
 # json method of response object  
 # convert json format data into 
 # python format data 
 x = response.json() 
-
 # Now x contains list of nested dictionaries 
 # Check the value of "cod" key is equal to 
 # "404", means city is found otherwise, 

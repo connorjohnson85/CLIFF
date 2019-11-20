@@ -15,7 +15,7 @@ def currentTimeSilent():
     print(datetime.datetime.now().date(), datetime.datetime.now().time())
 
 def currentTimeProduction():
-    ts('The current time is: ' + datetime.datetime.now().date() + ' ' + datetime.datetime.now().time())
+    ts('The current time is: ' + str(datetime.datetime.now().date()) + ' ' + str(datetime.datetime.now().time()))
 
 def currentTimeWebsite():
     return 'The current time is: ' + str(datetime.datetime.now().date()) + ' ' + str(datetime.datetime.now().time())
@@ -41,4 +41,5 @@ def network_diagonistics():
 
 def system_diagonistics():
     os.system('top -l1 | grep Processes -a10')
+    os.system('du -c | grep total')
     network_diagonistics()

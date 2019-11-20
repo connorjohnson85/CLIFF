@@ -24,8 +24,14 @@ def speechToText():
     mic = sr.Microphone()
     with mic as source:
         r.adjust_for_ambient_noise(source)
-        audio = r.listen(source)
-        question = r.recognize_google(audio)
+        test = 1
+        while test == 1:
+            try:
+                audio = r.listen(source)
+                question = r.recognize_google(audio)
+                test = 2
+            except sr.UnknownValueError:
+                textToSpeech('Sorry, I didn\'t catch that')
     return question
 
 # modular code to prevent more reduncancy than neccassary, checks mode to see whether it should 
@@ -33,6 +39,7 @@ def speechToText():
 def textTesting(mode, text):
     if mode == 'production':
         textToSpeech(text)
+
     elif mode == 'silent':
         print(text)
 

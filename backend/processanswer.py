@@ -1,6 +1,7 @@
 import commands.mymath as mymath
 import commands.system as system
 import commands.productivity as productivity
+import commands.protocols as protocol
 from services.Speech import textToSpeech as textToSpeech
 import eastereggs.flipacoin as flipACoin
 import eastereggs.rockpaperscissors as RockPaperScissors
@@ -95,9 +96,14 @@ def processAnswer(mode, name, answer):
 
 	elif 'check network' in answer or 'network diagonostics' in answer:
 		system.network_diagonistics()
-		
+
 	elif 'check system' in answer or 'system diagonostics' in answer:
 		system.system_diagonistics()
+
+	elif 'run' in answer and 'protocol' in answer: 
+		answer = answer.replace('run ', '')
+		userProtocol = answer
+		protocol.runProtocol(mode, userProtocol)
 
 	else: 
 		print('I\'m sorry, we don\'t appear to have the command ' + answer)
