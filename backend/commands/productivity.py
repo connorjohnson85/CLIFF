@@ -56,4 +56,3 @@ def reminderProduction(name):
                 ts('Setting Reminder')
         else: 
                 ts('Ok')
-

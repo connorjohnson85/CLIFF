@@ -2,9 +2,7 @@ import commands.mymath as mymath
 import commands.system as system
 import commands.productivity as productivity
 import commands.protocols as protocol
-from services.Speech import textToSpeech as textToSpeech
-from services.Speech import textTesting
-from services.Speech import inputTesting
+from services.Speech import textToSpeech as textToSpeech, textTesting, inputTesting
 import eastereggs.flipacoin as flipACoin
 import eastereggs.rockpaperscissors as RockPaperScissors
 import eastereggs.rolladice as rollADice
@@ -14,14 +12,15 @@ import games.minesweeper as mineSweeper
 import games.tictactoe as ticTacToe
 import ScienceSimulators.physics.main as physics
 import webservices.formservices as formservices
+import os
 
 # This is the body of the program. This connects takes the answer, and then runs the command associated with the command. When it gets too large, I May have to create a new approach to this
 
 def check(answer): 
 	# Another exit checker
-	if answer == 'exit':
+	if 'exit' in answer:
 		return False
-	elif answer == 'good night':	
+	elif 'good night' in answer:	
 		return False
 	else:
 		return True
@@ -47,7 +46,7 @@ def processAnswer(mode, name, answer):
 
 	elif 'good night' in answer:
 		textTesting(mode, 'Good night ' + name)
-		textTesting(mode, 'Get some sleep sir')
+		textTesting(mode, 'Get some sleep')
 
 	# Sends email
 	elif 'email' in answer:
@@ -59,6 +58,7 @@ def processAnswer(mode, name, answer):
 			productivity.reminderSilent(name)
 		elif mode == 'production':
 			productivity.reminderProduction(name)
+
 	# prints the time 
 	elif 'time' in answer: 
 		if mode == 'silent':
@@ -92,7 +92,7 @@ def processAnswer(mode, name, answer):
 	
 	# Initializes a python line instance: Specific to silent mode, more of a development option
 	elif 'python shell' in answer: 
-		system.python_shell
+		system.python_shell()
 	
 	# Runs my physics engine
 	elif 'physics engine' in answer: 
@@ -111,9 +111,56 @@ def processAnswer(mode, name, answer):
 		answer = answer.replace('run ', '')
 		userProtocol = answer
 		protocol.runProtocol(mode, userProtocol)
+
 	elif 'create project' in answer:
 		projectName = answer.split()[2:]
 		system.createProject(' '.join(projectName))
+
+	elif 'create file' in answer:
+		answer = answer.replace('create file ', '')
+		system.createFile(mode, answer)
+	
+	elif 'clear file' in answer:
+		answer = answer.replace('clear file ', '')
+		system.clearFile(mode, answer)
+
+	elif 'write to file' in answer:
+		answer = answer.replace('write to file ', '')
+		system.writeFile(mode, answer)
+
+	elif 'delete file' in answer:
+		answer = answer.replace('delete file ', '')
+		confirm = input('Delete file {}? (Y/N) '.format(answer))
+		confirm = confirm.lower()
+		if confirm == 'y' or confirm == 'yes':
+			try:
+				os.remove(answer)	
+			except FileNotFoundError:
+				textTesting(mode, 'File does not exist')
+			else:
+				textTesting(mode, 'File Removed')	
+
+	elif 'change directory to' in answer:
+		directory = answer.replace('change directory to ', '')
+		if directory == '..':
+			currentdirectory = os.getcwd().split('/')[:-1]
+			os.chdir('/'.join(currentdirectory))
+		else:
+			os.chdir('{}/{}'.format(os.getcwd(), directory))
+		textTesting(mode ,os.getcwd())
+
+	elif 'read file' in answer:
+		answer = answer.replace('read file ', '')
+		system.readFile(mode, answer)
+
+	elif 'open project' in answer:
+		project = answer.replace('open project ', '')
+		system.openProject(mode, project)
+
+	elif 'run command' in answer:
+		command = answer.replace('run command ', '')
+		os.system(command)
+
 	else: 
 		textTesting(mode, 'I\'m sorry, we don\'t appear to have the command ' + answer)
 
