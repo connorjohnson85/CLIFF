@@ -3,6 +3,7 @@ import random
 import math
 import os
 
-def main():
-    print('Main Function Class Goes Here')
 
+# Your main function class goes here
+def main():
+    print('Filler Code')

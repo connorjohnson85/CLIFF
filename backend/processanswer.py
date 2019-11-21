@@ -21,6 +21,8 @@ def check(answer):
 	# Another exit checker
 	if answer == 'exit':
 		return False
+	elif answer == 'good night':	
+		return False
 	else:
 		return True
 
@@ -41,7 +43,11 @@ def processAnswer(mode, name, answer):
 	
 	# Exits program
 	elif 'exit' in answer:
-		print('Goodbye ' + name)
+		textTesting(mode, 'Goodbye ' + name)
+
+	elif 'good night' in answer:
+		textTesting(mode, 'Good night ' + name)
+		textTesting(mode, 'Get some sleep sir')
 
 	# Sends email
 	elif 'email' in answer:
@@ -109,7 +115,7 @@ def processAnswer(mode, name, answer):
 		projectName = answer.split()[2:]
 		system.createProject(' '.join(projectName))
 	else: 
-		print('I\'m sorry, we don\'t appear to have the command ' + answer)
+		textTesting(mode, 'I\'m sorry, we don\'t appear to have the command ' + answer)
 
 def processAnswerWebSite(name, answer):
 
