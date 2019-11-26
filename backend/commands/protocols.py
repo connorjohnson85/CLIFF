@@ -9,11 +9,8 @@ def listProtocols(mode):
     for item in protocols:
         textTesting(mode, item)
 
-def housePartyProtocol(mode):
-    textTesting(mode, 'Running house party')
 
-
-protocols = {'test protocol': testProtocol, 'list protocols': listProtocols, 'house party protocol': housePartyProtocol}
+protocols = {'test protocol': testProtocol, 'list protocols': listProtocols}
 
 def runProtocol(mode, protocol):
     try: 

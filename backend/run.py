@@ -6,16 +6,21 @@ from services.Speech import speechToText as speechrecognition
 def run(name, mode): 
     AIOn = True
     if mode == 'production':
+        ts('What do you need assistance with today?')
+
         while AIOn == True: 
-            ts('What do you need assistance with today?')
             # Runs speech Recognition
             question = speechrecognition()
             AIOn = p.check(question)
             p.processAnswer(mode, name, question)
-    if mode == 'silent': 
-         while AIOn == True: 
-            print('What do you need assistance with today?')
+            ts('command ran')
+
+    if mode == 'silent':  
+        print('What do you need assistance with today?')
+
+        while AIOn == True:
             question = input(name + ': ')
             AIOn = p.check(question)
             p.processAnswer(mode, name, question)
+            print('command ran successfully')
 

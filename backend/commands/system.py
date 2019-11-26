@@ -1,11 +1,27 @@
 import datetime
 from services.Speech import textToSpeech as ts, inputTesting, textTesting
 import os
-
+import time
 #
 # All System functions are stored in this folder
 # Anything that involves the main cpu or the body of cliff is stored here
 #
+
+globalPath = '/Users/robinhansen/CLIFF'
+
+def stopwatch(mode):
+    def time_convert(sec):
+        mins = sec // 60
+        sec = sec % 60
+        hours = mins // 60
+        mins = mins % 60
+        textTesting(mode, "Time Lapsed = {0}:{1}:{2}".format(int(hours),int(mins),sec))
+    input("Press Enter to start stopwatch")
+    start_time = time.time()
+    input("Press Enter to stop stopwatch")
+    end_time = time.time()
+    time_lapsed = end_time - start_time
+    time_convert(time_lapsed)
 
 def options():
     print('C.L.I.F.F: I can currently recognize speech, play tictactoe, set reminders, easter eggs, run system and network diagonistics, and talk!')
@@ -71,7 +87,7 @@ def writeFile(mode, file):
 
     file.close()
 
-def createProject(projectName):
+def createProject(mode, projectName):
     path = os.getcwd()
     path += '/projects/' + projectName
     try: 
@@ -97,8 +113,44 @@ def main():
         textTesting(mode, 'Successfully created Project %s' % projectName)
 
 def openProject(mode, projectName):
-    os.chdir('/Users/robinhansen/CLIFF/projects/{}'.format(projectName))
+    os.chdir('{0}/projects/{1}'.format(globalPath, projectName))
     textTesting(mode, 'directory changed into project {}'.format(projectName))
 
 def closeProject(mode):
-    os.chdir('/Users/robinhansen/CLIFF')
+    os.chdir(globalPath)
+
+def openNote(mode, note):
+    try:
+        newNote = open(note, 'r')
+        textTesting(mode, newNote.read())
+        newNote.close()
+    except FileNotFoundError:
+        textTesting(mode, '{} doesn\'t exist'.format(note))
+  
+def createNote(mode):
+    name = inputTesting(mode, 'What would you like the title of the note to be? ')
+    line = inputTesting(mode, 'What would you like the note to say? ')
+    newFile = open('{0}/journals/notes/{1}'.format(globalPath, name), 'w+')
+    newFile.write(line)
+    newFile.close()
+
+def listNotes(mode):
+    notes = []
+    os.chdir('{0}/journals/notes'.format(globalPath))
+    os.system('ls')
+    os.chdir(globalPath)
+
+def deleteNote(mode, name):
+    try:
+        print(globalPath)
+        os.remove('{0}/journals/notes/{1}'.format(globalPath,name))
+        
+    except FileNotFoundError:
+        textTesting(mode, '{} not found'.format(name))
+
+def appendNote(mode, note):
+    try:
+        newNote = open(note, 'a+')
+    except FileNotFoundError:
+        textTesting(mode, 'Note not found')
+

@@ -14,7 +14,9 @@ import ScienceSimulators.physics.main as physics
 import webservices.formservices as formservices
 import os
 
-# This is the body of the program. This connects takes the answer, and then runs the command associated with the command. When it gets too large, I May have to create a new approach to this
+# This is the body of the program. This connects takes the answer, and then runs the command associated with the command.
+globalPath = os.getcwd()
+
 
 def check(answer): 
 	# Another exit checker
@@ -70,6 +72,8 @@ def processAnswer(mode, name, answer):
 	elif 'flip a coin' in answer: 
 		flipACoin.flipacoin(mode)
 
+	elif 'stopwatch' in answer:
+		system.stopwatch(mode)
 	# Rolls a dice
 	elif 'roll a dice' in answer: 
 		rollADice.rolladice(mode)
@@ -114,7 +118,7 @@ def processAnswer(mode, name, answer):
 
 	elif 'create project' in answer:
 		projectName = answer.split()[2:]
-		system.createProject(' '.join(projectName))
+		system.createProject(mode, ' '.join(projectName))
 
 	elif 'create file' in answer:
 		answer = answer.replace('create file ', '')
@@ -160,6 +164,26 @@ def processAnswer(mode, name, answer):
 	elif 'run command' in answer:
 		command = answer.replace('run command ', '')
 		os.system(command)
+
+	elif 'close project' in answer:
+		system.closeProject(mode)
+
+
+
+	elif 'open' in answer and 'notes' in answer:
+		note = answer.replace('open ', '')
+		note = note.replace('notes ', '')
+		system.openNote(mode, '/Users/robinhansen/CLIFF/journals/notes/{}'.format(note))
+	
+	elif 'create' in answer and 'note' in answer: 
+		system.createNote(mode)
+
+	elif 'list notes' in answer:
+		system.listNotes(mode)
+
+	elif 'delete note' in answer:
+		note = answer.replace('delete note ', '')
+		system.deleteNote(mode, note)
 
 	else: 
 		textTesting(mode, 'I\'m sorry, we don\'t appear to have the command ' + answer)
