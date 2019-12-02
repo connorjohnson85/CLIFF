@@ -2,6 +2,7 @@ import datetime
 from services.Speech import textToSpeech as ts, inputTesting, textTesting
 import os
 import time
+import datetime
 #
 # All System functions are stored in this folder
 # Anything that involves the main cpu or the body of cliff is stored here
@@ -154,3 +155,5 @@ def appendNote(mode, note):
     except FileNotFoundError:
         textTesting(mode, 'Note not found')
 
+def timer(mode, time):
+    print(time)
