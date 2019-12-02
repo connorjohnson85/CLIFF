@@ -27,9 +27,12 @@ def check(answer):
 	else:
 		return True
 
-def processAnswer(mode, name, answer):
+def processAnswer(mode, name, answer, lastCommand):
 
 	answer = answer.lower()
+
+	if answer == '' or answer == 'run last command':
+		answer = lastCommand
 
 	# Hello World example
 	if answer == 'hello':
@@ -62,7 +65,7 @@ def processAnswer(mode, name, answer):
 			productivity.reminderProduction(name)
 
 	# prints the time 
-	elif 'time' in answer: 
+	elif 'time' in answer and 'timer' not in answer: 
 		if mode == 'silent':
 			system.currentTimeSilent()
 		elif mode == 'production':
@@ -103,7 +106,10 @@ def processAnswer(mode, name, answer):
 		physics.run()
 
 	elif 'pick a number' in answer: 
-		pickANumber.pickANumber(mode)
+		numbers = answer.replace('pick a number between', '')
+		number1 = numbers.split(' and ')[0]
+		number2 = numbers.split(' and ')[1]
+		pickANumber.pickANumber(mode, number1, number2)
 
 	elif 'check network' in answer or 'network diagonostics' in answer:
 		system.network_diagonistics()
@@ -112,8 +118,8 @@ def processAnswer(mode, name, answer):
 		system.system_diagonistics()
 
 	elif 'run' in answer and 'protocol' in answer: 
-		answer = answer.replace('run ', '')
-		userProtocol = answer
+		protocolone = answer.replace('run ', '')
+		userProtocol = protocolone
 		protocol.runProtocol(mode, userProtocol)
 
 	elif 'create project' in answer:
@@ -168,8 +174,6 @@ def processAnswer(mode, name, answer):
 	elif 'close project' in answer:
 		system.closeProject(mode)
 
-
-
 	elif 'open' in answer and 'notes' in answer:
 		note = answer.replace('open ', '')
 		note = note.replace('notes ', '')
@@ -185,8 +189,15 @@ def processAnswer(mode, name, answer):
 		note = answer.replace('delete note ', '')
 		system.deleteNote(mode, note)
 
+	elif 'run timer for ' in answer:
+		time = answer.replace('run timer for ', '')
+		system.timer(mode, time)
+
 	else: 
 		textTesting(mode, 'I\'m sorry, we don\'t appear to have the command ' + answer)
+
+	lastCommand = answer
+	return lastCommand
 
 def processAnswerWebSite(name, answer):
 
