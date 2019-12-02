@@ -18,7 +18,3 @@ def runProtocol(mode, protocol):
         function(mode)
     except KeyError:
         print('{0} not found'.format(protocol))
-    
-    
-
-
