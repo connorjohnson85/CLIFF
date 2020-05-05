@@ -1,0 +1,17 @@
+Fuel Levels at 54%
+Reactor integretity at 100%
+We are currently using 75% of the current energy levels
+Repulsor integrity at 100%
+Repulsor power at 35%
+Inertial Field integrity at 100%
+Inertial Field Power levels at 100%
+Inertial dispersion unit integrity at 100%
+HUD Systems at 100%
+Heat Levels at 10% capacity
+Interior Tempertature at 98 degrees fahrenheit
+Exterior Tempertature at 72 degrees fahrenheit
+Flight stabilizers integrity at 100%
+Armor integrity at 100%
+Fuel levels at 75%
+Flight systems currently use 23% of power
+8 out of 8 engines running
