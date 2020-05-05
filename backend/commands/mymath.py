@@ -4,8 +4,9 @@ import math
 # A calculator function
 # Use it to create new calulator functions to add to it. Useful for Physics engine
 #
+
 def add(num1, num2):
-	return (num1 + num2)
+    return (num1 + num2)
 
 def subtract(num1, num2):
 	return (num1 - num2)

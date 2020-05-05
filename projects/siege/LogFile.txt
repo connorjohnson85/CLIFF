@@ -1,0 +1,1 @@
+A basic Log File. Used to log errors so they don't display on the main console

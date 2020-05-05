@@ -8,7 +8,7 @@ import datetime
 # Anything that involves the main cpu or the body of cliff is stored here
 #
 
-globalPath = '/Users/robinhansen/CLIFF'
+globalPath = '/home/connor/CLIFF/CLIFF'
 
 def stopwatch(mode):
     def time_convert(sec):
@@ -46,7 +46,16 @@ def command_line():
         if command == 'exit':
             running = False 
             break
-        os.system(command)
+        if command == '':
+            print("You have to put in a command!")
+        if 'cd' in command:
+                directory = command.split(" ")[1]
+                try:
+                        os.chdir(directory)
+                except FileNotFoundError:
+                        os.system("echo 'directory doesn\'t exist'")
+        else:
+                os.system(command)
 
 # Starts a python shell instance. Used more for debugging than anything else
 def python_shell():
@@ -57,8 +66,8 @@ def network_diagonistics():
     os.system('ping google.com -c 10 | grep \'packets\'')
 
 def system_diagonistics():
-    os.system('top -l1 | grep Processes -a10')
-    os.system('du -c | grep total')
+    os.system('top | grep \'Processes\' -a')
+    os.system('du -c | grep \'total\'')
     network_diagonistics()
 
 def clearFile(mode, file):
@@ -89,7 +98,8 @@ def writeFile(mode, file):
     file.close()
 
 def createProject(mode, projectName):
-    path = os.getcwd()
+    path = globalPath
+
     path += '/projects/' + projectName
     try: 
         os.mkdir(path)

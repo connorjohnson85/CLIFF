@@ -1,6 +1,7 @@
 from gtts import gTTS 
 import os 
 import speech_recognition as sr
+import time
 
 # converts text to speech using gtts module
 def textToSpeech(mytext):
@@ -17,18 +18,24 @@ def textToSpeech(mytext):
     myobj.save("soundfile.mp3") 
   
     # Playing the converted file 
-    os.system("mpg321 soundfile.mp3")
+    os.system("omxplayer soundfile.mp3")
 # converts speech to text using speech_recognition
 def speechToText(): 
     r = sr.Recognizer()
+    print("mic drop ready?")
+    time.sleep(1)
     mic = sr.Microphone()
+    print("mic drop detected")
+    time.sleep(1000)
     with mic as source:
         r.adjust_for_ambient_noise(source)
         test = 1
         while test == 1:
             try:
                 audio = r.listen(source)
+                print("whoops")
                 question = r.recognize_google(audio)
+                print("great")
                 test = 2
             except sr.UnknownValueError:
                 textToSpeech('Sorry, I didn\'t catch that')

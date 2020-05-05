@@ -18,10 +18,12 @@ def run(name, mode):
     if mode == 'silent':  
         lastCommand = 'hello'
         print('What do you need assistance with today?')
-
+        inProject = False
         while AIOn == True:
-            question = input(name + ': ')
+            if inProject == True:
+                question = input('({0}) {1}: '.format(project, name))
+            else: 
+                question = input(name + ': ')
             AIOn = p.check(question)
-            lastCommand = p.processAnswer(mode, name, question, lastCommand)
-            print('command ran successfully')
+            lastCommand, inProject, project = p.processAnswer(mode, name, question, lastCommand)
 
