@@ -1,0 +1,1072 @@
+/* you can use these kind of comments to comment out multiple lines of code 
+This is coding using javascript. These comments are just here to explain the code if you want to look at them. 
+*/
+//these are comments you just need to preface them with // and then it won't affect the code 
+function onOpen() { //functions are code containers that you can use to organize your code and call it one at a time instead of all at once
+  var ui = DocumentApp.getUi(); //Ui stands for user interface, which is in google docs, the menu items
+  // Or DocumentApp or FormApp.
+  ui.createMenu("Hi I'm A custom menu of craziness") //creates a menu. you can only create one menu per a google doc, but it can have as many submenus as you want it to
+      .addItem('Date', 'menuItem1') //these are comments. they don't affect the code, but are generally used to explain how you did what you did to other people and yourself when you get really forgetfull. like me!
+      .addSeparator() //seperates the two menus
+
+         
+          .addItem('encrypt', 'encrypt')
+          .addItem('decrypt', 'decrypt')
+          .addItem('Translate', 'translate')
+          .addItem('To english', 'untranslate')
+          
+  
+   .addSeparator()   
+  .addSubMenu(ui.createMenu("Calculator")
+          .addItem('visual', 'visualcalc')
+          .addItem('add','add')
+          .addItem('subtract', 'subtract') 
+          .addItem('divide', 'divide')
+          .addItem('multiply', 'multiply')
+          .addItem('power', 'power')
+          .addItem('square root', 'SquareRoot')
+          .addSubMenu(ui.createMenu("complex")
+               .addItem('quadratic', 'quadratic'))
+          .addSubMenu(ui.createMenu("conversions")
+                      .addItem('Gallons to Mililiters', 'Gallonstomililiters')
+                      .addItem('inches to milimeters', 'inchestomilimeters')
+                      .addItem('feet to meters', 'feettometers') 
+                      .addItem('meters to nanometers', 'meterstonanometers')
+                      .addItem('usd to euros', 'usdtoeuros')
+                      .addItem('miles to kilometers', 'milestokilometers')
+                      .addItem('Mililiters to Gallons', 'mililiterstogallons')
+                      .addItem('inches to milimeters', 'inchestomilimeters')
+                      .addItem('feet to meters', 'feettometers') 
+                      .addItem('nanometers to meters', 'nanometerstometers')
+                      .addItem('kilometers to miles', 'kilometers to miles')
+                      .addItem('farenheit to celsius', 'farenheittocelsius')
+                      .addItem('celsius to farenheit', 'celsiustofarenheit')
+                     )) 
+           //.addItem('snake','snake')   
+    
+      .addSeparator()
+   .addSubMenu(ui.createMenu("games")
+                .addItem('Minesweeper','Minesweeper')
+                .addItem('Tic-Tac-Toe','TicTacToe')
+                .addItem('Snake', 'Snake')
+                .addItem('Tic-Tac-Toe2', 'TicTacToe2')
+                .addItem('Pong', 'pong')
+                .addItem('Atari','custom')
+                .addItem('Zombie game', 'myGameChild')
+                .addItem('Tanks!', 'Tanks')
+                .addItem('Ultimate-Tic-Tac-Toe', 'ultTicTacToe')
+                ) 
+      .addToUi();
+}
+var doc = DocumentApp.getActiveDocument(); //getActiveDocument() is a built in function designed for code like this. it will run in the document it's built into.
+var body = doc.getBody(); //calls the body of the document. This is how you inset text. you only need to call this once.
+var cursor = DocumentApp.getActiveDocument().getCursor(); //getCursor returns the position of the Cursor.
+var now = Date(); //sets a variable called now. 
+function menuItem1() { //a function that is defined later in the code. 
+  DocumentApp.getUi() // Or DocumentApp or FormApp.
+     cursor.insertText(now);
+}
+var rand = Math.floor(Math.random() * 3);     // returns a random integer from 0 to 2
+
+
+function Gallonstomililiters() {
+ var ui = DocumentApp.getUi(); // Same variations.
+
+  var result = ui.prompt(
+      'Gallons to mililiters',
+    'Gallons:',
+      ui.ButtonSet.OK_CANCEL);
+
+  // Process the user's response.
+  var button = result.getSelectedButton();
+  var text = result.getResponseText();
+ if (button == ui.Button.OK) {
+    // User clicked "OK".
+   var ans = parseInt(text)
+   ans = ans * 3785.412
+   ui.alert('Mililiters: ' + ans);
+  } else if (button == ui.Button.CANCEL) {
+    // User clicked "Cancel".
+    ui.alert("YOU'VE KILLED ME AHHHHHHHHH");
+  } else if (button == ui.Button.CLOSE) {
+    // User clicked X in the title bar.
+    ui.alert("YOU'VE KILLED ME (I will be back...)");
+  }
+}
+function mililiterstogallons() {
+   var ui = DocumentApp.getUi(); // Same variations.
+
+  var result = ui.prompt(
+      'Mililiters to gallons',
+    'Mililiters:',
+      ui.ButtonSet.OK_CANCEL);
+
+  // Process the user's response.
+  var button = result.getSelectedButton();
+  var text = result.getResponseText();
+if (button == ui.Button.OK) {
+    // User clicked "OK".
+   var ans = parseInt(text)
+   ans = ans / 3785.412
+   ui.alert('Gallons: ' + ans);
+  } else if (button == ui.Button.CANCEL) {
+    // User clicked "Cancel".
+    ui.alert("YOU'VE KILLED ME AHHHHHHHHH");
+  } else if (button == ui.Button.CLOSE) {
+    // User clicked X in the title bar.
+    ui.alert("YOU'VE KILLED ME (I will be back...)");
+  }
+}
+
+function feettometers() {
+   var ui = DocumentApp.getUi(); // Same variations.
+
+  var result = ui.prompt(
+      'Feet to meters',
+    'Feet:',
+      ui.ButtonSet.OK_CANCEL);
+
+  // Process the user's response.
+  var button = result.getSelectedButton();
+  var text = result.getResponseText();
+  if (button == ui.Button.OK) {
+    // User clicked "OK".
+   var ans = parseInt(text)
+   ans = ans / 3.281
+   ui.alert('Meters: ' + ans);
+  } else if (button == ui.Button.CANCEL) {
+    // User clicked "Cancel".
+    ui.alert("YOU'VE KILLED ME AHHHHHHHHH");
+  } else if (button == ui.Button.CLOSE) {
+    // User clicked X in the title bar.
+    ui.alert("YOU'VE KILLED ME (I will be back...)");
+  }
+}
+
+function meterstofeet() {
+   var ui = DocumentApp.getUi(); // Same variations.
+
+  var result = ui.prompt(
+      'Meters to feet',
+    'Meters:',
+      ui.ButtonSet.OK_CANCEL);
+
+  // Process the user's response.
+  var button = result.getSelectedButton();
+  var text = result.getResponseText();
+ if (button == ui.Button.OK) {
+    // User clicked "OK".
+   var ans = parseInt(text)
+   ans = ans * 3.281
+   ui.alert('Feet: ' + ans);
+  } else if (button == ui.Button.CANCEL) {
+    // User clicked "Cancel".
+    ui.alert("YOU'VE KILLED ME AHHHHHHHHH");
+  } else if (button == ui.Button.CLOSE) {
+    // User clicked X in the title bar.
+    ui.alert("YOU'VE KILLED ME (I will be back...)");
+  }
+}
+
+function meterstonanometers() {
+   var ui = DocumentApp.getUi(); // Same variations.
+
+  var result = ui.prompt(
+      'Meters to nanometers',
+    'Meters:',
+      ui.ButtonSet.OK_CANCEL);
+
+  // Process the user's response.
+  var button = result.getSelectedButton();
+  var text = result.getResponseText();
+ if (button == ui.Button.OK) {
+    // User clicked "OK".
+   var ans = parseInt(text)
+   ans = ans * 1e+9
+   ui.alert('Nanometers: ' + ans);
+  } else if (button == ui.Button.CANCEL) {
+    // User clicked "Cancel".
+    ui.alert("YOU'VE KILLED ME AHHHHHHHHH");
+  } else if (button == ui.Button.CLOSE) {
+    // User clicked X in the title bar.
+    ui.alert("YOU'VE KILLED ME (I will be back...)");
+  }
+}
+function nanometerstometers() {
+   var ui = DocumentApp.getUi(); // Same variations.
+
+  var result = ui.prompt(
+      'Nanometers to meters',
+    'Nanometers:',
+      ui.ButtonSet.OK_CANCEL);
+
+  // Process the user's response.
+  var button = result.getSelectedButton();
+  var text = result.getResponseText();
+if (button == ui.Button.OK) {
+    // User clicked "OK".
+   var ans = parseInt(text)
+   ans = ans / 1e+9
+   ui.alert('Meters: ' + ans);
+  } else if (button == ui.Button.CANCEL) {
+    // User clicked "Cancel".
+    ui.alert("YOU'VE KILLED ME AHHHHHHHHH");
+  } else if (button == ui.Button.CLOSE) {
+    // User clicked X in the title bar.
+    ui.alert("YOU'VE KILLED ME (I will be back...)");
+  }
+}
+
+function usdtoeuros() {
+   var ui = DocumentApp.getUi(); // Same variations.
+
+  var result = ui.prompt(
+      'USD to EUROS',
+    'Dollars:',
+      ui.ButtonSet.OK_CANCEL);
+
+  // Process the user's response.
+  var button = result.getSelectedButton();
+  var text = result.getResponseText();
+if (button == ui.Button.OK) {
+    // User clicked "OK".
+   var ans = parseInt(text)
+   ans = ans * .88
+   ui.alert('Euros: ' + ans);
+  } else if (button == ui.Button.CANCEL) {
+    // User clicked "Cancel".
+    ui.alert("YOU'VE KILLED ME AHHHHHHHHH");
+  } else if (button == ui.Button.CLOSE) {
+    // User clicked X in the title bar.
+    ui.alert("YOU'VE KILLED ME (I will be back...)");
+  }
+}
+
+function kilometerstomiles() {
+   var ui = DocumentApp.getUi(); // Same variations.
+
+  var result = ui.prompt(
+      'kilometers to miles',
+    'kilometers:',
+      ui.ButtonSet.OK_CANCEL);
+
+  // Process the user's response.
+  var button = result.getSelectedButton();
+  var text = result.getResponseText();
+if (button == ui.Button.OK) {
+    // User clicked "OK".
+   var ans = parseInt(text)
+   ans = ans * 1.609
+   ui.alert('Miles: ' + ans);
+  } else if (button == ui.Button.CANCEL) {
+    // User clicked "Cancel".
+    ui.alert("YOU'VE KILLED ME AHHHHHHHHH");
+  } else if (button == ui.Button.CLOSE) {
+    // User clicked X in the title bar.
+    ui.alert("YOU'VE KILLED ME (I will be back...)");
+  }
+}
+
+function milestokilometers() {
+   var ui = DocumentApp.getUi(); // Same variations.
+
+  var result = ui.prompt(
+      'miles to kilometers',
+    'Miles:',
+      ui.ButtonSet.OK_CANCEL);
+
+  // Process the user's response.
+  var button = result.getSelectedButton();
+  var text = result.getResponseText();
+if (button == ui.Button.OK) {
+    // User clicked "OK".
+   var ans = parseInt(text)
+   ans = ans / 1.609
+   ui.alert('kilometers: ' + ans);
+  } else if (button == ui.Button.CANCEL) {
+    // User clicked "Cancel".
+    ui.alert("YOU'VE KILLED ME AHHHHHHHHH");
+  } else if (button == ui.Button.CLOSE) {
+    // User clicked X in the title bar.
+    ui.alert("YOU'VE KILLED ME (I will be back...)");
+  }
+}
+
+function inchestomilimeters() {
+   var ui = DocumentApp.getUi(); // Same variations.
+
+  var result = ui.prompt(
+      'Inches to milimeters',
+    'Inches:',
+      ui.ButtonSet.OK_CANCEL);
+
+  // Process the user's response.
+  var button = result.getSelectedButton();
+  var text = result.getResponseText();
+if (button == ui.Button.OK) {
+    // User clicked "OK".
+   var ans = parseInt(text)
+   ans = ans * 25.4
+   ui.alert('milimeters: ' + ans);
+  } else if (button == ui.Button.CANCEL) {
+    // User clicked "Cancel".
+    ui.alert("YOU'VE KILLED ME AHHHHHHHHH");
+  } else if (button == ui.Button.CLOSE) {
+    // User clicked X in the title bar.
+    ui.alert("YOU'VE KILLED ME (I will be back...)");
+  }
+}
+
+function milimeterstoinches() {
+   var ui = DocumentApp.getUi(); // Same variations.
+
+  var result = ui.prompt(
+      'Milimeters to inches:',
+    'Milimeters:',
+      ui.ButtonSet.OK_CANCEL);
+
+  // Process the user's response.
+  var button = result.getSelectedButton();
+  var text = result.getResponseText();
+if (button == ui.Button.OK) {
+    // User clicked "OK".
+   var ans = parseInt(text)
+   ans = ans / 25.4
+   ui.alert('Inches: ' + ans);
+  } else if (button == ui.Button.CANCEL) {
+    // User clicked "Cancel".
+    ui.alert("YOU'VE KILLED ME AHHHHHHHHH");
+  } else if (button == ui.Button.CLOSE) {
+    // User clicked X in the title bar.
+    ui.alert("YOU'VE KILLED ME (I will be back...)");
+  }
+}
+
+function farenheittocelsius() {
+   var ui = DocumentApp.getUi(); // Same variations.
+
+  var result = ui.prompt(
+      'farenheit to celsius',
+    'Degrees farenheit:',
+      ui.ButtonSet.OK_CANCEL);
+
+  // Process the user's response.
+  var button = result.getSelectedButton();
+  var text = result.getResponseText();
+if (button == ui.Button.OK) {
+    // User clicked "OK".
+   var ans = parseInt(text)
+   ans = (ans - 32) * 5/9
+   ui.alert('degrees celsius: ' + ans);
+  } else if (button == ui.Button.CANCEL) {
+    // User clicked "Cancel".
+    ui.alert("YOU'VE KILLED ME AHHHHHHHHH");
+  } else if (button == ui.Button.CLOSE) {
+    // User clicked X in the title bar.
+    ui.alert("YOU'VE KILLED ME (I will be back...)");
+  }
+}
+
+function celsiustofarenheit() {
+   var ui = DocumentApp.getUi(); // Same variations.
+
+  var result = ui.prompt(
+      'Celsius to fahrenheit',
+    'Degrees Celsius: ',
+      ui.ButtonSet.OK_CANCEL);
+
+  // Process the user's response.
+  var button = result.getSelectedButton();
+  var text = result.getResponseText();
+if (button == ui.Button.OK) {
+    // User clicked "OK".
+   var ans = parseInt(text)
+   ans = (ans * 5/9) + 32
+   ui.alert('degrees fahrenheit: ' + ans);
+  } else if (button == ui.Button.CANCEL) {
+    // User clicked "Cancel".
+    ui.alert("YOU'VE KILLED ME AHHHHHHHHH");
+  } else if (button == ui.Button.CLOSE) {
+    // User clicked X in the title bar.
+    ui.alert("YOU'VE KILLED ME (I will be back...)");
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function add() { 
+ var ui = DocumentApp.getUi(); // Same variations.
+
+  var result = ui.prompt(
+      'Addition',
+    'separate numbers with an _:',
+      ui.ButtonSet.OK_CANCEL);
+
+  // Process the user's response.
+  var button = result.getSelectedButton();
+  var text = result.getResponseText();
+  var length = text.length;
+  var pos = text.indexOf("_");
+  var pos1 = text.lastIndexOf("_");
+  var text = text.replace('_','');
+  var text = text.replace('_','');
+  var text = text.replace('_','');
+  if (pos == pos1) {
+    var num1 = text.slice(0, (pos));
+    var num2 = text.slice(pos,length); 
+    num2 = parseInt(num2)
+    num1 = parseInt(num1)
+    var test = num1
+    num1 = num1 + num2
+  } else {
+    ui.alert('CRITICAL ERROR USED MORE THAN 2 NUMBERS');
+             }
+  if (button == ui.Button.OK) {
+    // User clicked "OK".
+    ui.alert('Your answer is ' + num1);
+  } else if (button == ui.Button.CANCEL) {
+    // User clicked "Cancel".
+    ui.alert("YOU'VE KILLED ME AHHHHHHHHH");
+  } else if (button == ui.Button.CLOSE) {
+    // User clicked X in the title bar.
+    ui.alert("YOU'VE KILLED ME (I will be back...)");
+  }
+}
+function subtract() { 
+ var ui = DocumentApp.getUi(); // Same variations.
+
+  var result = ui.prompt(
+      'Subtraction',
+    'separate numbers with an _:',
+      ui.ButtonSet.OK_CANCEL);
+
+  // Process the user's response.
+  var button = result.getSelectedButton();
+  var text = result.getResponseText();
+  var length = text.length;
+  var pos = text.indexOf("_");
+  var pos1 = text.lastIndexOf("_");
+  var text = text.replace('_','');
+  var text = text.replace('_','');
+  var text = text.replace('_','');
+  var num1 = text.slice(0, 1);
+  var num2 = text.slice(1,2);
+   if (pos == pos1) {
+    var num1 = text.slice(0, (pos));
+    var num2 = text.slice(pos,length); 
+    num2 = parseInt(num2)
+    num1 = parseInt(num1)
+    var test = num1
+    num1 = num1 - num2
+  } else {
+    ui.alert('CRITICAL ERROR USED MORE THAN 2 NUMBERS');
+             }
+  if (button == ui.Button.OK) {
+    // User clicked "OK".
+    ui.alert('Your answer is ' + num1);
+  } else if (button == ui.Button.CANCEL) {
+    // User clicked "Cancel".
+    ui.alert("YOU'VE KILLED ME AHHHHHHHHH");
+  } else if (button == ui.Button.CLOSE) {
+    // User clicked X in the title bar.
+    ui.alert("YOU'VE KILLED ME (I will be back...)");
+  }
+}
+function multiply() { 
+ var ui = DocumentApp.getUi(); // Same variations.
+
+  var result = ui.prompt(
+      'Multiplication',
+    'separate numbers with an _:',
+      ui.ButtonSet.OK_CANCEL);
+
+  // Process the user's response.
+  var button = result.getSelectedButton();
+  var text = result.getResponseText();
+  var length = text.length;
+  var pos = text.indexOf("_");
+  var pos1 = text.lastIndexOf("_");
+  var text = text.replace('_','');
+  var text = text.replace('_','');
+  var text = text.replace('_','');
+   if (pos == pos1) {
+    var num1 = text.slice(0, (pos));
+    var num2 = text.slice(pos,length); 
+    num2 = parseInt(num2)
+    num1 = parseInt(num1)
+    var test = num1
+    num1 = num1 * num2
+  } else {
+    ui.alert('CRITICAL ERROR USED MORE THAN 2 NUMBERS');
+             }
+  if (button == ui.Button.OK) {
+    // User clicked "OK".
+    ui.alert('Your answer is ' + num1);
+  } else if (button == ui.Button.CANCEL) {
+    // User clicked "Cancel".
+    ui.alert("YOU'VE KILLED ME AHHHHHHHHH");
+  } else if (button == ui.Button.CLOSE) {
+    // User clicked X in the title bar.
+    ui.alert("YOU'VE KILLED ME (I will be back...)");
+  }
+}
+function divide() { 
+ var ui = DocumentApp.getUi(); // Same variations.
+
+  var result = ui.prompt(
+      'Division',
+    'separate numbers with an _:',
+      ui.ButtonSet.OK_CANCEL);
+
+  // Process the user's response.
+  var button = result.getSelectedButton();
+  var text = result.getResponseText();
+  var length = text.length;
+  var pos = text.indexOf("_");
+  var pos1 = text.lastIndexOf("_");
+  var text = text.replace('_','');
+  var text = text.replace('_','');
+  var text = text.replace('_','');
+  if (pos == pos1) {
+    var num1 = text.slice(0, (pos));
+    var num2 = text.slice(pos,length); 
+    num2 = parseInt(num2)
+    num1 = parseInt(num1)
+    var test = num1
+    num1 = num1 / num2
+  } else {
+    ui.alert('CRITICAL ERROR USED MORE THAN 2 NUMBERS');
+             }
+  if (button == ui.Button.OK) {
+    // User clicked "OK".
+    ui.alert('Your answer is ' + num1);
+  } else if (button == ui.Button.CANCEL) {
+    // User clicked "Cancel".
+    ui.alert("YOU'VE KILLED ME AHHHHHHHHH");
+  } else if (button == ui.Button.CLOSE) {
+    // User clicked X in the title bar.
+    ui.alert("YOU'VE KILLED ME (I will be back...)");
+  }
+}
+function power() { 
+ var ui = DocumentApp.getUi(); // Same variations.
+
+  var result = ui.prompt(
+      'Powering up!',
+    'separate numbers with an _:',
+      ui.ButtonSet.OK_CANCEL);
+
+  // Process the user's response.
+  var button = result.getSelectedButton();
+  var text = result.getResponseText();
+  var length = text.length;
+  var pos = text.indexOf("_");
+  var pos1 = text.lastIndexOf("_");
+  var text = text.replace('_','');
+  var text = text.replace('_','');
+  var text = text.replace('_','');
+   if (pos == pos1) {
+    var num1 = text.slice(0, (pos));
+    var num2 = text.slice(pos,length); 
+    num2 = parseInt(num2)
+    num1 = parseInt(num1)
+    var test = num1
+    num1 = Math.pow(num1, num2)
+  } else {
+    ui.alert('CRITICAL ERROR USED MORE THAN 2 NUMBERS');
+             }
+  if (button == ui.Button.OK) {
+    // User clicked "OK".
+    ui.alert('Your answer is ' + num1);
+  } else if (button == ui.Button.CANCEL) {
+    // User clicked "Cancel".
+    ui.alert("YOU'VE KILLED ME AHHHHHHHHH");
+  } else if (button == ui.Button.CLOSE) {
+    // User clicked X in the title bar.
+    ui.alert("YOU'VE KILLED ME (I will be back...)");
+  }
+}
+function SquareRoot() { 
+ var ui = DocumentApp.getUi(); // Same variations.
+
+  var result = ui.prompt(
+      'SquareRoot!',
+    'TAKES ONE NUMBER',
+      ui.ButtonSet.OK_CANCEL);
+
+  // Process the user's response.
+  var button = result.getSelectedButton();
+  var text = result.getResponseText();
+  var num1 = text
+  num1 = parseInt(num1)
+  num1 = Math.sqrt(num1)
+  if (button == ui.Button.OK) {
+    // User clicked "OK".
+    ui.alert('Your answer is ' + num1);
+  } else if (button == ui.Button.CANCEL) {
+    // User clicked "Cancel".
+    ui.alert("YOU'VE KILLED ME AHHHHHHHHH");
+  } else if (button == ui.Button.CLOSE) {
+    // User clicked X in the title bar.
+    ui.alert("YOU'VE KILLED ME (I will be back...)");
+  }
+}
+function quadratic() { 
+ var ui = DocumentApp.getUi(); // Same variations.
+
+  var result = ui.prompt(
+      'Quadratic',
+    'separate numbers with an _:',
+      ui.ButtonSet.OK_CANCEL);
+
+  // Process the user's response.
+  var button = result.getSelectedButton();
+  var text = result.getResponseText();
+  var pos = text.indexOf("_");
+  var pos1 = text.lastIndexOf("_");
+  var text = text.replace('_','');
+  var text = text.replace('_','');
+  var text = text.replace('_','');
+  var length =text.length;
+  var num1 = text.slice(0, pos);
+  var num2 = text.slice((pos),(pos1-1));
+  var num3 = text.slice((pos1-1),length); 
+  num2 = parseInt(num2)
+  num1 = parseInt(num1)
+  num3 = parseInt(num3)
+  num2 = num2 * -1
+  var ans1 = (num2 + Math.sqrt(Math.pow((num2*-1), 2) - (4*num1*num3)))/(2*num1);
+  var ans2 = (num2 - Math.sqrt(Math.pow((num2*-1), 2) - (4*num1*num3)))/(2*num1);
+  if (button == ui.Button.OK) {
+    // User clicked "OK".
+    ui.alert('Your answer is ' + ans1 + ',' + ans2); // ' ' + num1 + num2 + ' ' + num3 + pos + ' ' + pos1);
+  
+  } 
+    else if (button == ui.Button.CANCEL) {
+    // User clicked "Cancel".
+    ui.alert("YOU'VE KILLED ME AHHHHHHHHH");
+  } else if (button == ui.Button.CLOSE) {
+    // User clicked X in the title bar.
+    ui.alert("YOU'VE KILLED ME (I will be back...)");
+  }
+}
+function encrypt() {
+ var ui = DocumentApp.getUi(); // Same variations.
+
+  var result = ui.prompt(
+      'ENCRYPTION',
+    'secret message:',
+      ui.ButtonSet.OK_CANCEL);
+  
+  var button = result.getSelectedButton();
+  var text = result.getResponseText();
+  var ans = text
+ if (button == ui.Button.OK) {
+    // User clicked "OK".
+   var alphabet = ['a', 'b','/', 'c','d','e','f','g','$','h','i','j','k','l', '%', '*', ':', '@', '_','m','n','o',"'",'p','q','r','s','t','u','v','w','x','y','z', ' ', '.', '!','?','1','2','3','4','5','6','7','8','9','10','A','B','C','D','E','F','G','H','I','J','K','L','-', '{', '}','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z', '(', ')', '<', '>', '+', '='];
+   var slicer = Math.floor(Math.random()*82)
+   var shift = slicer
+   var key = alphabet.slice(slicer,slicer+1)
+   var encrypt = []
+   for (var i = 0; i < alphabet.length; i++) { 
+       var hi = alphabet.slice(slicer +(i-1),slicer+i)
+       encrypt.push(hi)
+       if (hi == 'z') 
+         slicer = 0-i 
+   }
+        var ans = []
+   for (var i = 0; i < text.length; i++) {
+     var loc = alphabet.indexOf(text[i])
+     var yolo = [alphabet[loc + shift]]  
+     var test = loc+shift
+     if (test < 82) { 
+     ans = (ans + yolo);
+     
+     }
+     else {
+     var youknowwho = (loc + shift - 82);
+     ans = (ans + alphabet[youknowwho]);
+      
+     }
+   }
+   
+   
+   cursor.insertText('your secret message is: ' + ans + ' key: '+ shift);
+   
+    
+ } 
+    else if (button == ui.Button.CANCEL) {
+    // User clicked "Cancel".
+    ui.alert("YOU'VE KILLED ME AHHHHHHHHH");
+  } else if (button == ui.Button.CLOSE) {
+    // User clicked X in the title bar.
+    ui.alert("YOU'VE KILLED ME (I will be back...)");
+  }
+} 
+function decrypt() {
+ var ui = DocumentApp.getUi(); // Same variations.
+
+  var result = ui.prompt(
+      'DECRYPTION',
+    'secret message:',
+      ui.ButtonSet.OK_CANCEL);
+  
+  var button = result.getSelectedButton();
+  var text = result.getResponseText();
+  var ans = text
+ if (button == ui.Button.OK) {
+    // User clicked "OK".
+   var alphabet = ['a', 'b','/', 'c','d','e','f','g','$','h','i','j','k','l', '%', '*', ':', '@', '_','m','n','o',"'",'p','q','r','s','t','u','v','w','x','y','z', ' ', '.', '!','?','1','2','3','4','5','6','7','8','9','10','A','B','C','D','E','F','G','H','I','J','K','L','-', '{', '}','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z', '(', ')', '<', '>', '+', '='];
+   
+   var slicer = Math.floor(Math.random()*83)
+   var Result = ui.prompt( 
+     'DECRYPTION KEY: ',
+     'key: ',
+      ui.ButtonSet.OK);
+      
+     var shift = Result.getResponseText();
+     shift = parseInt(shift);
+     ans = ''
+   for (var i = 0; i < text.length; i++) {
+     var loc = alphabet.indexOf(text[i])
+     var yolo = [alphabet[loc - shift]]  
+     var test = loc-shift
+     if (test >= 0) { 
+     ans = (ans + yolo);
+     
+     }
+      else {
+     var youknowwho = ((loc + 82)- shift);
+     ans = (ans + alphabet[youknowwho]);
+   
+     }
+   }
+   
+   
+   ui.alert('your secret message is: ' + ans);
+   
+   
+ } 
+    else if (button == ui.Button.CANCEL) {
+    // User clicked "Cancel".
+    ui.alert("YOU'VE KILLED ME AHHHHHHHHH");
+  } else if (button == ui.Button.CLOSE) {
+    // User clicked X in the title bar.
+    ui.alert("YOU'VE KILLED ME (I will be back...)");
+  }
+}
+  function Minesweeper() { 
+    var html = HtmlService.createHtmlOutputFromFile('minesweeper')
+      .setWidth(400)
+      .setHeight(300);
+  DocumentApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
+  .showSidebar(html); 
+  }
+
+    function TicTacToe() { 
+    var html = HtmlService.createHtmlOutputFromFile('Tic-Tac-Toe')
+      .setWidth(400)
+      .setHeight(300);
+  DocumentApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
+  .showSidebar(html); 
+  }
+function Snake() { 
+  var html = HtmlService.createHtmlOutputFromFile('Snake')
+      .setWidth(1000)
+      .setHeight(1000);
+  DocumentApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
+  .showSidebar(html); 
+}
+    function pong() { 
+    var html = HtmlService.createHtmlOutputFromFile('pong')
+      .setWidth(400)
+      .setHeight(300);
+  DocumentApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
+  .showSidebar(html); 
+  }
+  function TicTacToe2() {
+   var html = HtmlService.createHtmlOutputFromFile('Tic-Tac-Toe2')
+      .setWidth(400)
+      .setHeight(300);
+  DocumentApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
+  .showSidebar(html); 
+  }
+  function custom() {
+   var html = HtmlService.createHtmlOutputFromFile('custom')
+      .setWidth(400)
+      .setHeight(300);
+  DocumentApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
+  .showSidebar(html); 
+  }
+  function myGameChild() {
+   var html = HtmlService.createHtmlOutputFromFile('myGameChild')
+      .setWidth(400)
+      .setHeight(300);
+  DocumentApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
+  .showSidebar(html); 
+  }
+   function Tanks() {
+   var html = HtmlService.createHtmlOutputFromFile('tanks')
+      .setWidth(400)
+      .setHeight(300);
+  DocumentApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
+  .showSidebar(html); 
+  }
+  function visualcalc() {
+   var html = HtmlService.createHtmlOutputFromFile('calculator')
+      .setWidth(400)
+      .setHeight(300);
+  DocumentApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
+  .showSidebar(html); 
+  }
+  function translate() {
+  ui = DocumentApp.getUi()
+  text = ui.prompt(
+    'Language:',
+    'supports most langs:',
+      ui.ButtonSet.OK);
+  var button = text.getSelectedButton();
+  var text = text.getResponseText();
+    if (button === ui.Button.OK) {
+       translated= ui.prompt(
+    'text:',
+    'text:',
+      ui.ButtonSet.OK); 
+      var translate = translated.getResponseText();
+       list = ['korean', 'english', 'spanish', 'french', 'german', 'afrikaans', 'albanian', 'arabic', 'azerbaijani', 'basque', 'bengali', 'belarusian', 'bulgarian', 'catalan','chinese', 'croatian', 'czech', 'danish', 'dutch', 'esperanto', 'estonian', 'filipino', 'finnish','frisian', 'galician', 'georgian','greek','gujarati', 'haitian creole', 'hausa', 'hawaiian', 'hebrew','hindi','hmong', 'hungarian', 'icelandic', 'igbo', 'indonesian', 'irish', 'italian', 'japanese', 'javanese']
+      var loc = list.indexOf(text)
+             
+              if (loc === 0) {
+              if (loc === 0) {
+              translation = LanguageApp.translate(translate, 'en', 'ko');
+              ui.alert("translation: " + translation); 
+              }
+              } 
+              if (loc === 1) {
+              translation = LanguageApp.translate(translate, 'en', 'en');
+              ui.alert("translation: " + translation); 
+              }
+              if (loc === 2) {
+              translation = LanguageApp.translate(translate, 'en', 'es');
+              ui.alert("translation: " + translation); 
+              }
+              if (loc === 3) {
+              translation = LanguageApp.translate(translate, 'en', 'fr');
+              ui.alert("translation: " + translation); 
+              }
+              if (loc === 4) {
+              translation = LanguageApp.translate(translate, 'en', 'de');
+              ui.alert("translation: " + translation); 
+              }
+       if (loc === 5) {
+              translation = LanguageApp.translate(translate, 'en', 'af');
+              ui.alert("translation: " + translation); 
+              }
+       if (loc === 6) {
+              translation = LanguageApp.translate(translate, 'en', 'sq');
+              ui.alert("translation: " + translation); 
+              }
+       if (loc === 7) {
+              translation = LanguageApp.translate(translate, 'en', 'ar');
+              ui.alert("translation: " + translation); 
+              }
+       if (loc === 8) {
+              translation = LanguageApp.translate(translate, 'en', 'az');
+              ui.alert("translation: " + translation); 
+              }
+       if (loc === 9) {
+              translation = LanguageApp.translate(translate, 'en', 'eu');
+              ui.alert("translation: " + translation); 
+              }
+       if (loc === 10) {
+              translation = LanguageApp.translate(translate, 'en', 'bn');
+              ui.alert("translation: " + translation); 
+              }
+       if (loc === 11) {
+              translation = LanguageApp.translate(translate, 'en', 'be');
+              ui.alert("translation: " + translation); 
+              }
+       if (loc === 12) {
+              translation = LanguageApp.translate(translate, 'en', 'bg');
+              ui.alert("translation: " + translation); 
+              }
+       if (loc === 13) {
+              translation = LanguageApp.translate(translate, 'en', 'ca');
+              ui.alert("translation: " + translation); 
+              }
+       if (loc === 14) {
+              translation = LanguageApp.translate(translate, 'en', 'zh-TW');
+              ui.alert("translation: " + translation); 
+              }
+       if (loc === 15) {
+              translation = LanguageApp.translate(translate, 'en', 'hr');
+              ui.alert("translation: " + translation); 
+              }
+       if (loc === 16) {
+              translation = LanguageApp.translate(translate, 'en', 'cs');
+              ui.alert("translation: " + translation); 
+              }
+       if (loc === 17) {
+              translation = LanguageApp.translate(translate, 'en', 'da');
+              ui.alert("translation: " + translation); 
+              }
+       if (loc === 18) {
+              translation = LanguageApp.translate(translate, 'en', 'nl');
+              ui.alert("translation: " + translation); 
+              }
+       if (loc === 19) {
+              translation = LanguageApp.translate(translate, 'en', 'eo');
+              ui.alert("translation: " + translation); 
+              }
+       if (loc === 20) {
+         translation = LanguageApp.translate(translate, 'en', 'et');
+              ui.alert("translation: " + translation); 
+              }
+      if (loc === 21) {
+              translation = LanguageApp.translate(translate, 'en', 'tl');
+              ui.alert("translation: " + translation); 
+              }
+      if (loc === 22) {
+              translation = LanguageApp.translate(translate, 'en', 'fi');
+              ui.alert("translation: " + translation); 
+              }
+      if (loc === 23) {
+              translation = LanguageApp.translate(translate, 'en', 'fy');
+              ui.alert("translation: " + translation); 
+              }
+      if (loc === 24) {
+              translation = LanguageApp.translate(translate, 'en', 'gl');
+              ui.alert("translation: " + translation); 
+              }
+      if (loc === 25) {
+              translation = LanguageApp.translate(translate, 'en', 'ka');
+              ui.alert("translation: " + translation); 
+              }
+      if (loc === 26) {
+              translation = LanguageApp.translate(translate, 'en', 'el');
+              ui.alert("translation: " + translation); 
+              }
+      if (loc === 27) {
+              translation = LanguageApp.translate(translate, 'en', 'gu');
+              ui.alert("translation: " + translation); 
+              }
+      if (loc === 28) {
+              translation = LanguageApp.translate(translate, 'en', 'ht');
+              ui.alert("translation: " + translation); 
+              }
+      if (loc === 29) {
+              translation = LanguageApp.translate(translate, 'en', 'ha');
+              ui.alert("translation: " + translation); 
+              }
+      if (loc === 30) {
+              translation = LanguageApp.translate(translate, 'en', 'haw');
+              ui.alert("translation: " + translation); 
+              }
+      if (loc === 31) {
+              translation = LanguageApp.translate(translate, 'en', 'he**');
+              ui.alert("translation: " + translation); 
+              }
+      if (loc === 32) {
+              translation = LanguageApp.translate(translate, 'en', 'hi');
+              ui.alert("translation: " + translation); 
+              }
+      if (loc === 33) {
+              translation = LanguageApp.translate(translate, 'en', 'hmn');
+              ui.alert("translation: " + translation); 
+              }
+      if (loc === 34) {
+              translation = LanguageApp.translate(translate, 'en', 'hu');
+              ui.alert("translation: " + translation); 
+              }
+      if (loc === 35) {
+              translation = LanguageApp.translate(translate, 'en', 'is');
+              ui.alert("translation: " + translation); 
+              }
+      if (loc === 36) {
+              translation = LanguageApp.translate(translate, 'en', 'ig');
+              ui.alert("translation: " + translation); 
+              }
+      if (loc === 37) {
+              translation = LanguageApp.translate(translate, 'en', 'id');
+              ui.alert("translation: " + translation); 
+              }
+      if (loc === 38) {
+              translation = LanguageApp.translate(translate, 'en', 'ga');
+              ui.alert("translation: " + translation); 
+              }
+      if (loc === 39) {
+              translation = LanguageApp.translate(translate, 'en', 'it');
+              ui.alert("translation: " + translation); 
+              }
+      if (loc === 40) {
+              translation = LanguageApp.translate(translate, 'en', 'ja');
+              ui.alert("translation: " + translation); 
+              }
+      if (loc === 41) {
+              translation = LanguageApp.translate(translate, 'en', 'jw');
+              ui.alert("translation: " + translation); 
+              }
+              } }
+        function untranslate() {
+  ui = DocumentApp.getUi()
+  text = ui.prompt(
+    'Language:',
+    'supports most langs:',
+      ui.ButtonSet.OK);
+  var button = text.getSelectedButton();
+  var text = text.getResponseText();
+  var text = text.toLowerCase();
+    if (button === ui.Button.OK) {
+       translated= ui.prompt(
+    'text:',
+    'text:',
+      ui.ButtonSet.OK); 
+      var translate = translated.getResponseText();
+      list = ['korean', 'english', 'spanish', 'french', 'german', 'afrikaans', 'albanian', 'arabic', 'azerbaijani', 'basque', 'bengali', 'belarusian', 'bulgarian', 'catalan','chinese', 'croatian', 'czech', 'danish', 'dutch', 'esperanto', 'estonian', 'filipino', 'finnish']
+      var loc = list.indexOf(text)
+             
+              
+              if (loc === 0) {
+              translation = LanguageApp.translate(translate, 'ko', 'en');
+              ui.alert("translation: " + translation); 
+              }
+              
+              if (loc === 1) {
+              translation = LanguageApp.translate(translate, 'en', 'en');
+              ui.alert("translation: " + translation); 
+              }
+              if (loc === 2) {
+              translation = LanguageApp.translate(translate, 'es', 'en');
+              ui.alert("translation: " + translation); 
+              }
+              if (loc === 3) {
+              translation = LanguageApp.translate(translate, 'fr', 'en');
+              ui.alert("translation: " + translation); 
+              }
+              if (loc === 4) {
+              translation = LanguageApp.translate(translate, 'de', 'en');
+              ui.alert("translation: " + translation); 
+              }
+       }   
+     
+  
+  }
+function ultTicTacToe() {
+   var html = HtmlService.createHtmlOutputFromFile('ultTicTacToe')
+      .setWidth(400)
+      .setHeight(300);
+  DocumentApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
+  .showSidebar(html); 
+}
