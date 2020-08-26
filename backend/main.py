@@ -7,7 +7,7 @@ if mode == 'production':
     name = greeting.greetproduction()
 if mode == 'testing':
     name = greeting.greettest()
-if mode == 'silent': 
+if mode == 'silent':
     name = greeting.greetsilent()
 
 # forwards input into the run function

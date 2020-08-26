@@ -15,6 +15,7 @@ import webservices.formservices as formservices
 import games.hangman as hangman
 import brain.chatbot as chatbot
 import os
+import time as t
 
 # This is the body of the program. This connects takes the answer, and then runs the command associated with the command.
 globalPath = os.getcwd()
@@ -23,7 +24,7 @@ inProject = False
 
 def check(answer): 
 	# Another exit checker
-	if 'exit' in answer:
+	if answer == "exit":
 		return False
 	elif 'good night' in answer:	
 		return False
@@ -37,17 +38,34 @@ def processAnswer(mode, name, answer, lastCommand):
 
 	if answer == '' or answer == 'run last command':
 		answer = lastCommand
-
 	# Hello World example
 	if answer == 'hello':
 		textTesting(mode, 'hello')
-
+	elif "open brain" in answer:
+		textTesting(mode, "Opening brain")
+		system.openBrain(mode)
+		inProject = True
+		projectName = "brain"
+	elif "exit brain" in answer:
+		textTesting(mode, "Exiting Brain")
+		os.chdir("/home/connor/CLIFF/CLIFF")
+		inProject = False
+	elif "i want cheese" in answer:
+		textTesting(mode, "You are not welcome here Brock!")
+		t.sleep(5)
+		os.system("shutdown now")
+	elif "differentiation" in answer or "derivative" in answer:
+		equation = input("C.L.I.F.F.: What is the equation?")
+		variable = input("C.L.I.F.F.: What is the variable of differention?")
+		print(mymath.differentiate(equation, variable))
+	elif "integrate" in answer: 
+		equation = input("C.L.I.F.F.: What is the equation?")
+		variable = input ("C.L.I.F.F.: What is the variable of integration?")
+		print(mymath.integrate(equation, variable))
 	elif 'pick a card' in answer:
 		pickACard.pickACard(mode)
-	
 	elif answer == 'chat':
 		chatbot.chat(mode, name)
-
 	# Prints options
 	elif 'options' in answer: 
 		system.options()
@@ -156,12 +174,12 @@ def processAnswer(mode, name, answer, lastCommand):
 		confirm = confirm.lower()
 		if confirm == 'y' or confirm == 'yes':
 			try:
-				os.remove(answer)	
+				os.remove(answer)
 			except FileNotFoundError:
 				textTesting(mode, 'File does not exist')
 			else:
-				textTesting(mode, 'File Removed')	
-	# allows cliff to fully autonomously run around the file system 
+				textTesting(mode, 'File Removed')
+	# allows cliff to fully autonomously run around the file system
 	elif 'change directory to' in answer:
 		directory = answer.replace('change directory to ', '')
 		if directory == '..':

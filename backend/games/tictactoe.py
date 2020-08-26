@@ -231,14 +231,14 @@ def winCheck(mapping, mode):
         playerWinMessage(mode)
     elif mapping[6] == 'x' and mapping[7] == 'x' and mapping[8] == 'x':
         playerWinMessage(mode)
-    # # Rows computer
-    # elif mapping[3] == 'o' and mapping[4] == 'o' and mapping[5] == 'o':
-    #     computerWinMessage(mode)
-    # elif mapping[0] == 'o' and mapping[1] == 'o' and mapping[2] == 'o':
-    #     computerWinMessage(mode)
-    # elif mapping[6] == 'o' and mapping[7] == 'o' and mapping[8] == 'o':
-    #     computerWinMessage(mode)
-    # # Columns Player 
+    # Rows computer
+    elif mapping[3] == 'o' and mapping[4] == 'o' and mapping[5] == 'o':
+         computerWinMessage(mode)
+    elif mapping[0] == 'o' and mapping[1] == 'o' and mapping[2] == 'o':
+        computerWinMessage(mode)
+    elif mapping[6] == 'o' and mapping[7] == 'o' and mapping[8] == 'o':
+         computerWinMessage(mode)
+    # Columns Player 
     # elif mapping[6] == 'x' and mapping[7] == 'x' and mapping[8] != 'o':
     #     board[4][2] = 'o'
     # elif mapping[6] == 'x' and mapping[7] != 'o' and mapping[8] == 'x':
@@ -268,7 +268,7 @@ def winCheck(mapping, mode):
 def playerWinMessage(mode):
     print('Player1 Wins!')
     if input('Play Again?(Y/N)').lower() == 'y':
-        ticTacToe(mode)     
+        ticTacToe(mode)
 
 # Prints computer win message
 def computerWinMessage(mode):
