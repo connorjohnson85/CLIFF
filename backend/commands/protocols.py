@@ -1,5 +1,6 @@
 import random
 import math
+import pyaudio
 from services.Speech import textTesting, inputTesting
 from commands.otherProtocols.protocols.protocolzero import protocolZero 
 
@@ -17,8 +18,8 @@ def protocol2(mode):
 	print("Running protocol two... ")
 
 def protocol3(mode):
-	print("Running protocol three... ")
-
+	path = "/home/connor/CLIFF/CLIFF/backend/music"
+	
 
 protocols = {'test protocol': testProtocol, 'list protocols': listProtocols, "protocol one": protocol1, "protocol two": protocol2, "protocol3": protocol3, 
 'protocol zero': protocolZero}

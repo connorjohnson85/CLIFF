@@ -25,7 +25,7 @@ def stopwatch(mode):
     time_convert(time_lapsed)
 
 def options():
-    print('C.L.I.F.F: I can currently recognize speech, play tictactoe, set reminders, easter eggs, run system and network diagonistics, and talk!')
+    print('C.L.I.F.F: I can currently recognize speech, play tictactoe, set reminders, easter eggs, run system and network diagonistics, and talk  about cheese!')
 
 def currentTimeSilent():
     # Gets the current date
@@ -44,7 +44,7 @@ def command_line():
     while running == True:
         command = input('$ ')
         if command == 'exit':
-            running = False 
+            running = False
             break
         if command == '':
             print("You have to put in a command!")
@@ -84,11 +84,11 @@ def createFile(mode, file):
     file = open(file, 'w+')
     file.close()
     textTesting(mode, 'File Created')
-    
+
 def writeFile(mode, file):
     file = open(file, 'a+')
     opener = True
-    while opener == True:    
+    while opener == True:
         line = inputTesting(mode, 'What would you like to write into the file? ')
         if line == 'exit':
             file.close()
@@ -101,7 +101,7 @@ def createProject(mode, projectName):
     path = globalPath
 
     path += '/projects/' + projectName
-    try: 
+    try:
         os.mkdir(path)
         file = open(path + '/LogFile.txt', 'w+')
         file.write('A basic Log File. Used to log errors so they don\'t display on the main console')
@@ -137,7 +137,7 @@ def openNote(mode, note):
         newNote.close()
     except FileNotFoundError:
         textTesting(mode, '{} doesn\'t exist'.format(note))
-  
+
 def createNote(mode):
     name = inputTesting(mode, 'What would you like the title of the note to be? ')
     line = inputTesting(mode, 'What would you like the note to say? ')
@@ -155,7 +155,7 @@ def deleteNote(mode, name):
     try:
         print(globalPath)
         os.remove('{0}/journals/notes/{1}'.format(globalPath,name))
-        
+
     except FileNotFoundError:
         textTesting(mode, '{} not found'.format(name))
 
@@ -167,3 +167,10 @@ def appendNote(mode, note):
 
 def timer(mode, time):
     print(time)
+
+def openBrain(mode):
+	try:
+		os.chdir(globalPath + '/brain')
+
+	except:
+		print("Directory not Found")
