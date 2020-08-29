@@ -8,6 +8,6 @@ def chat(mode, name):
 	while True:
 		answer = inputTesting(mode, "Connor: ".format(name))
 		if "bye" in answer:
-			textTesting(mode, "C.L.I.F.F.: goodbye {}".format(name))
+			textTesting(mode, "C.L.I.F.F.: Goodbye {}".format(name))
 			break
 
